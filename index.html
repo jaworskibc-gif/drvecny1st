@@ -1166,18 +1166,18 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
     </div>
     <div class="nav">
       <div class="nav-section">Overview</div>
-      <div class="nav-item active" onclick="showPanel('dashboard')"><span class="icon">📊</span>Dashboard</div>
+      <div class="nav-item active" onclick="showPanel(this, 'dashboard')"><span class="icon">📊</span>Dashboard</div>
       <div class="nav-section">Lead Management</div>
-      <div class="nav-item" onclick="showPanel('crm')"><span class="icon">🧠</span>CRM Pipeline<span class="nav-badge">8</span></div>
-      <div class="nav-item" onclick="showPanel('email')"><span class="icon">✉️</span>Email System</div>
+      <div class="nav-item" onclick="showPanel(this, 'crm')"><span class="icon">🧠</span>CRM Pipeline<span class="nav-badge">8</span></div>
+      <div class="nav-item" onclick="showPanel(this, 'email')"><span class="icon">✉️</span>Email System</div>
       <div class="nav-section">AI Agents</div>
-      <div class="nav-item" onclick="showPanel('agents')"><span class="icon">🤖</span>Agent Stack<span class="nav-badge">6</span></div>
-      <div class="nav-item" onclick="showPanel('news')"><span class="icon">📡</span>News Brief</div>
+      <div class="nav-item" onclick="showPanel(this, 'agents')"><span class="icon">🤖</span>Agent Stack<span class="nav-badge">6</span></div>
+      <div class="nav-item" onclick="showPanel(this, 'news')"><span class="icon">📡</span>News Brief</div>
       <div class="nav-section">Content</div>
-      <div class="nav-item" onclick="showPanel('calendar')"><span class="icon">📅</span>30-Day Calendar</div>
-      <div class="nav-item" onclick="showPanel('inventory')"><span class="icon">🚗</span>Inventory Posts</div>
+      <div class="nav-item" onclick="showPanel(this, 'calendar')"><span class="icon">📅</span>30-Day Calendar</div>
+      <div class="nav-item" onclick="showPanel(this, 'inventory')"><span class="icon">🚗</span>Inventory Posts</div>
       <div class="nav-section">Strategy</div>
-      <div class="nav-item" onclick="showPanel('playbook')"><span class="icon">🎯</span>90-Day Playbook</div>
+      <div class="nav-item" onclick="showPanel(this, 'playbook')"><span class="icon">🎯</span>90-Day Playbook</div>
     </div>
   </div>
 
@@ -1532,11 +1532,13 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 
 <script>
 // NAV
-function showPanel(id) {
+function showPanel(el, id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
+  if (el && el.classList && el.classList.contains('nav-item')) {
+    el.classList.add('active');
+  }
 }
 
 // TABS
