@@ -39,9 +39,26 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
   background: linear-gradient(135deg, #060b14 0%, #0a1628 50%, #0f2044 100%);
   display:flex; align-items:center;
 }
+.home-hero-video-shell {
+  position:absolute;
+  inset:0;
+}
+.home-hero-video {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  transition:opacity 0.5s ease;
+}
+.home-hero-video.is-active {
+  opacity:1;
+}
 .home-hero-bg {
   position:absolute; inset:0;
   background:
+    linear-gradient(90deg, rgba(6,11,20,0.82) 0%, rgba(10,22,40,0.56) 38%, rgba(10,22,40,0.22) 66%, rgba(10,22,40,0.56) 100%),
     radial-gradient(ellipse at 70% 50%, rgba(29,111,212,0.15) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 80%, rgba(13,158,138,0.08) 0%, transparent 50%);
 }
@@ -560,6 +577,14 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 <div class="page active" id="page-home">
 
   <div class="home-hero">
+    <div class="home-hero-video-shell" aria-hidden="true">
+      <video class="home-hero-video is-active" id="hero-video-1" autoplay muted playsinline preload="auto">
+        <source src="7154222-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+      <video class="home-hero-video" id="hero-video-2" muted playsinline preload="auto">
+        <source src="7154229-hd_1920_1080_25fps.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="home-hero-bg"></div>
     <div class="home-hero-content">
       <div class="home-hero-eyebrow">Central New York's Premier Used Auto Dealer</div>
@@ -675,32 +700,36 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
     <div class="video-section-inner">
       <div class="section-eyebrow" style="color:#60a5fa;">Featured Videos</div>
       <div class="video-heading">Dealer Video Showcase</div>
-      <div class="video-sub">Luxury drive clip is live now. The next two slots are ready for the other videos as soon as you send them.</div>
+      <div class="video-sub">Three live clips are wired in now across the site: off-road inventory, luxury presentation, and family-friendly daily-driver inventory.</div>
       <div class="video-grid">
+        <div class="video-card">
+          <video controls preload="metadata" playsinline>
+            <source src="jeep_offroad.mp4" type="video/mp4">
+          </video>
+          <div class="video-body">
+            <div class="video-label">Video 01</div>
+            <div class="video-title">Jeeps & 4x4s</div>
+            <div class="video-desc">Trail-focused inventory footage for the off-road lane and Jeep-first buyer audience.</div>
+          </div>
+        </div>
         <div class="video-card">
           <video controls preload="metadata" playsinline>
             <source src="luxury_drive.mp4" type="video/mp4">
           </video>
           <div class="video-body">
-            <div class="video-label">Video 01</div>
-            <div class="video-title">Luxury Drive</div>
-            <div class="video-desc">First live clip wired into the blue site homepage for immediate use.</div>
-          </div>
-        </div>
-        <div class="video-card">
-          <div class="video-placeholder">Video Slot 2</div>
-          <div class="video-body">
             <div class="video-label">Video 02</div>
-            <div class="video-title">Ready For Upload</div>
-            <div class="video-desc">Send the second file path and this slot will be replaced with the real video.</div>
+            <div class="video-title">Luxury</div>
+            <div class="video-desc">Premium showroom-style motion for the higher-end inventory lane.</div>
           </div>
         </div>
         <div class="video-card">
-          <div class="video-placeholder">Video Slot 3</div>
+          <video controls preload="metadata" playsinline>
+            <source src="family_drive.mp4" type="video/mp4">
+          </video>
           <div class="video-body">
             <div class="video-label">Video 03</div>
-            <div class="video-title">Ready For Upload</div>
-            <div class="video-desc">Send the third file path and this slot will be replaced with the real video.</div>
+            <div class="video-title">Family</div>
+            <div class="video-desc">Lifestyle footage for family buyers looking for practical daily vehicles.</div>
           </div>
         </div>
       </div>
@@ -1755,6 +1784,37 @@ HASHTAGS: (15 relevant tags)
 FB MARKETPLACE DESCRIPTION: (detailed, trust-building, under 150 words)\`;
   callClaude(prompt, 'out-inv');
 }
+
+function initHeroVideoSequence() {
+  const videos = [
+    document.getElementById('hero-video-1'),
+    document.getElementById('hero-video-2')
+  ].filter(Boolean);
+
+  if (videos.length < 2) return;
+
+  let activeIndex = 0;
+
+  function activateVideo(nextIndex) {
+    const currentVideo = videos[activeIndex];
+    const nextVideo = videos[nextIndex];
+    currentVideo.classList.remove('is-active');
+    nextVideo.classList.add('is-active');
+    nextVideo.currentTime = 0;
+    nextVideo.play().catch(() => {});
+    activeIndex = nextIndex;
+  }
+
+  videos.forEach((video, index) => {
+    video.addEventListener('ended', () => {
+      activateVideo((index + 1) % videos.length);
+    });
+  });
+
+  videos[0].play().catch(() => {});
+}
+
+initHeroVideoSequence();
 <\/script>
 </body>
 </html>`;
