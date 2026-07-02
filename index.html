@@ -179,6 +179,40 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 .inv-cta { margin-top:12px; width:100%; background:#0a1628; color:#fff; border:none; padding:10px; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:background 0.2s; }
 .inv-cta:hover { background:#1d6fd4; }
 
+/* VIDEO STRIP */
+.video-section { background:#0d1524; padding:80px 48px; }
+.video-section-inner { max-width:1200px; margin:0 auto; }
+.video-heading { font-family:'Rajdhani',sans-serif; font-size:42px; font-weight:700; color:#fff; margin-bottom:10px; }
+.video-sub { font-size:15px; color:rgba(255,255,255,0.65); max-width:620px; line-height:1.6; }
+.video-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:40px; }
+.video-card {
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,0.22);
+}
+.video-card video,
+.video-placeholder {
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+}
+.video-placeholder {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,0.45);
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  background:linear-gradient(135deg, #152238 0%, #0a1628 100%);
+}
+.video-body { padding:16px 18px 18px; }
+.video-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#60a5fa; margin-bottom:6px; }
+.video-title { font-family:'Rajdhani',sans-serif; font-size:24px; font-weight:700; color:#fff; margin-bottom:8px; }
+.video-desc { font-size:12px; color:rgba(255,255,255,0.66); line-height:1.6; }
+
 /* LEAD FORM SECTION */
 .lead-section { background:#f0f4f8; padding:80px 48px; }
 .lead-section-inner { max-width:700px; margin:0 auto; text-align:center; }
@@ -616,6 +650,42 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
             <div class="inv-details"><span>AWD</span><span>·</span><span>Pearl White</span><span>·</span><span>Carfax Verified</span></div>
             <div class="inv-price">$36,900</div>
             <button class="inv-cta">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-section">
+    <div class="video-section-inner">
+      <div class="section-eyebrow" style="color:#60a5fa;">Featured Videos</div>
+      <div class="video-heading">Dealer Video Showcase</div>
+      <div class="video-sub">Luxury drive clip is live now. The next two slots are ready for the other videos as soon as you send them.</div>
+      <div class="video-grid">
+        <div class="video-card">
+          <video controls preload="metadata" playsinline>
+            <source src="luxury_drive.mp4" type="video/mp4">
+          </video>
+          <div class="video-body">
+            <div class="video-label">Video 01</div>
+            <div class="video-title">Luxury Drive</div>
+            <div class="video-desc">First live clip wired into the blue site homepage for immediate use.</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-placeholder">Video Slot 2</div>
+          <div class="video-body">
+            <div class="video-label">Video 02</div>
+            <div class="video-title">Ready For Upload</div>
+            <div class="video-desc">Send the second file path and this slot will be replaced with the real video.</div>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-placeholder">Video Slot 3</div>
+          <div class="video-body">
+            <div class="video-label">Video 03</div>
+            <div class="video-title">Ready For Upload</div>
+            <div class="video-desc">Send the third file path and this slot will be replaced with the real video.</div>
           </div>
         </div>
       </div>
