@@ -79,11 +79,12 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 }
 .btn-outline:hover { border-color:#60a5fa; color:#60a5fa; }
 
-/* NICHE CARDS ON HOME */
+/* HOME VIDEO PANELS */
 .home-niches {
-  background:#f0f4f8; padding:80px 48px;
+  background:#050c18;
+  padding:0;
 }
-.home-niches-inner { max-width:1200px; margin:0 auto; }
+.home-niches-inner { max-width:none; margin:0; }
 .section-eyebrow {
   font-size:11px; letter-spacing:4px; text-transform:uppercase;
   color:#1d6fd4; margin-bottom:10px; font-weight:600;
@@ -94,55 +95,66 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 }
 .section-sub { font-size:15px; color:#4a5a72; margin-bottom:48px; max-width:500px; line-height:1.6; }
 
-.niche-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
+.home-niches-head {
+  max-width:1200px;
+  margin:0 auto;
+  padding:72px 48px 36px;
+}
+.home-niches-head .section-heading,
+.home-niches-head .section-sub { color:#fff; }
+.home-niches-head .section-sub { color:rgba(255,255,255,0.66); }
+.niche-cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  min-height:560px;
+}
 .niche-card-home {
-  border-radius:2px; overflow:hidden; cursor:pointer;
-  box-shadow:0 4px 24px rgba(10,22,40,0.10);
-  transition:transform 0.2s, box-shadow 0.2s;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  background:#0a1628;
+  min-height:560px;
 }
-.niche-card-home:hover { transform:translateY(-4px); box-shadow:0 8px 32px rgba(10,22,40,0.18); }
-.niche-hero-img {
-  height:220px; background-size:cover; background-position:center;
-  position:relative; overflow:hidden;
+.niche-card-home video {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
-.niche-hero-img::after {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%);
+.niche-card-home::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(4,10,18,0.18) 0%, rgba(4,10,18,0.34) 34%, rgba(4,10,18,0.86) 100%);
 }
-.niche-img-jeep {
-  background-image:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=80');
+.niche-card-body {
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:1;
+  padding:28px 24px 26px;
 }
-.niche-img-luxury {
-  background-image:url('https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&q=80');
-}
-.niche-img-family {
-  background-image:url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80');
-}
-.niche-img-label {
-  position:absolute; bottom:14px; left:16px; z-index:1;
-  font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:700;
-  color:#fff; letter-spacing:1px;
-}
-.niche-card-body { background:#fff; padding:20px 22px; }
 .niche-card-tag {
   display:inline-block; font-size:9px; font-weight:700;
-  letter-spacing:2px; text-transform:uppercase; padding:3px 10px; margin-bottom:10px;
+  letter-spacing:2px; text-transform:uppercase; padding:4px 10px; margin-bottom:12px;
+  border:1px solid rgba(255,255,255,0.22); color:#fff;
+  background:rgba(255,255,255,0.08);
 }
-.tag-jeep { background:rgba(212,101,10,0.1); color:#d4650a; border:1px solid rgba(212,101,10,0.2); }
-.tag-luxury { background:rgba(184,150,12,0.1); color:#b8960c; border:1px solid rgba(184,150,12,0.2); }
-.tag-family { background:rgba(29,111,212,0.1); color:#1d6fd4; border:1px solid rgba(29,111,212,0.2); }
-.niche-card-title { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:#0a1628; margin-bottom:6px; }
-.niche-card-desc { font-size:12px; color:#4a5a72; line-height:1.6; margin-bottom:14px; }
+.tag-jeep { border-color:rgba(212,101,10,0.42); color:#ffb170; }
+.tag-luxury { border-color:rgba(184,150,12,0.42); color:#ead67b; }
+.tag-family { border-color:rgba(96,165,250,0.42); color:#9ac6ff; }
+.niche-card-title { font-family:'Rajdhani',sans-serif; font-size:34px; font-weight:700; color:#fff; margin-bottom:8px; line-height:1; }
+.niche-card-desc { font-size:13px; color:rgba(255,255,255,0.72); line-height:1.6; margin-bottom:16px; max-width:360px; }
 .niche-card-cta {
-  font-size:11px; font-weight:700; letter-spacing:1.5px;
-  text-transform:uppercase; cursor:pointer; border:none;
-  background:none; display:flex; align-items:center; gap:6px;
-  transition:gap 0.2s;
+  font-size:11px; font-weight:700; letter-spacing:1.8px;
+  text-transform:uppercase; color:#fff; display:flex; align-items:center; gap:8px;
 }
-.cta-jeep { color:#d4650a; }
-.cta-luxury { color:#b8960c; }
-.cta-family { color:#1d6fd4; }
-.niche-card-home:hover .niche-card-cta { gap:10px; }
+.cta-jeep { color:#ffb170; }
+.cta-luxury { color:#ead67b; }
+.cta-family { color:#9ac6ff; }
 
 /* STATS BAR */
 .stats-bar {
@@ -570,40 +582,42 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 
   <div class="home-niches">
     <div class="home-niches-inner">
-      <div class="section-eyebrow">Shop by Collection</div>
-      <div class="section-heading">Three Niches.<br>One Dealership.</div>
-      <div class="section-sub">Whether you're hitting the trails, turning heads on the avenue, or loading up the family — we have the right vehicle for your life.</div>
+      <div class="home-niches-head">
+        <div class="section-eyebrow">Shop by Collection</div>
+        <div class="section-heading">Three Niches.<br>Three Moving Stories.</div>
+        <div class="section-sub">Jeeps and 4x4s for the trail, luxury inventory for the road, and family vehicles for real life. Each lane now plays its own background video on the homepage.</div>
+      </div>
       <div class="niche-cards">
         <div class="niche-card-home" onclick="showPage('jeep')">
-          <div class="niche-hero-img niche-img-jeep">
-            <div class="niche-img-label">Jeep Collection</div>
-          </div>
+          <video autoplay muted loop playsinline>
+            <source src="jeep_offroad.mp4" type="video/mp4">
+          </video>
           <div class="niche-card-body">
             <span class="niche-card-tag tag-jeep">Trail Ready</span>
-            <div class="niche-card-title">Find Your Next Trail Rig</div>
-            <div class="niche-card-desc">Wranglers, Cherokees, Gladiators — inspected, priced right, and ready for whatever the trail throws at them.</div>
-            <div class="niche-card-cta cta-jeep">View Jeep Inventory →</div>
+            <div class="niche-card-title">Jeeps & 4x4s</div>
+            <div class="niche-card-desc">Wranglers, Cherokees, Gladiators, and capable 4x4 inventory for buyers who want utility, attitude, and trail credibility.</div>
+            <div class="niche-card-cta cta-jeep">View Jeeps & 4x4s →</div>
           </div>
         </div>
         <div class="niche-card-home" onclick="showPage('luxury')">
-          <div class="niche-hero-img niche-img-luxury">
-            <div class="niche-img-label">Luxury Collection</div>
-          </div>
+          <video autoplay muted loop playsinline>
+            <source src="luxury_drive.mp4" type="video/mp4">
+          </video>
           <div class="niche-card-body">
             <span class="niche-card-tag tag-luxury">Premium</span>
-            <div class="niche-card-title">Drive Something Different</div>
-            <div class="niche-card-desc">Mercedes-Benz and premium luxury vehicles. CPO quality at pre-owned prices. White glove experience from first inquiry to keys in hand.</div>
+            <div class="niche-card-title">Luxury</div>
+            <div class="niche-card-desc">Mercedes-Benz and premium luxury inventory with clean presentation, premium tone, and a white-glove buyer journey.</div>
             <div class="niche-card-cta cta-luxury">View Luxury Inventory →</div>
           </div>
         </div>
         <div class="niche-card-home" onclick="showPage('family')">
-          <div class="niche-hero-img niche-img-family">
-            <div class="niche-img-label">Family Collection</div>
-          </div>
+          <video autoplay muted loop playsinline>
+            <source src="family_drive.mp4" type="video/mp4">
+          </video>
           <div class="niche-card-body">
             <span class="niche-card-tag tag-family">Family Ready</span>
-            <div class="niche-card-title">The Right Fit For Your Family</div>
-            <div class="niche-card-desc">Reliable minivans and family SUVs. Safety-rated, Carfax verified, priced for real families. Because the right vehicle changes everything.</div>
+            <div class="niche-card-title">Family</div>
+            <div class="niche-card-desc">Reliable minivans and family SUVs with real-world value, room, and safety-first positioning for practical buyers.</div>
             <div class="niche-card-cta cta-family">View Family Inventory →</div>
           </div>
         </div>
