@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Giant Auto Sales</title>
+  <desc id="desc">Primary Giant Auto Sales logo with a red vehicle silhouette over the words Giant Auto Sales.</desc>
+  <g fill="none" stroke="#ff0a0a" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M35 225c48-62 132-92 252-92h95c31-1 59-10 82-29l49-39c44-35 97-52 158-52h124c112 0 224 25 334 74 17 8 34 15 51 20" stroke-width="11"/>
+    <path d="M356 122h482" stroke-width="9"/>
+  </g>
+  <g fill="#ff0a0a">
+    <path d="M77 308c-28-27-42-64-42-111 0-47 14-84 42-111 29-27 70-41 123-41h146v61H217c-31 0-54 8-69 23-15 16-23 38-23 68 0 31 8 54 23 69 15 15 38 23 69 23h56v-44h-86v-58h170v164H200c-53 0-94-14-123-43z"/>
+    <rect x="386" y="45" width="88" height="306"/>
+    <path d="M534 351L632 45h115l100 306H752l-18-62H644l-18 62H534zm130-128h51l-25-88-26 88z"/>
+    <path d="M894 351V45h87l146 170V45h89v306h-82L983 174v177h-89z"/>
+    <path d="M80 402v-109h45l38 65 38-65h45v109h-40v-51l-24 40h-39l-24-40v51H80z"/>
+    <path d="M293 402V293h42v109h-42z"/>
+    <path d="M381 402v-109h58l60 74v-74h41v109h-49l-69-84v84h-41z"/>
+    <path d="M585 402V293h42v109h-42z"/>
+    <path d="M670 402v-109h45l38 65 38-65h45v109h-40v-51l-24 40h-39l-24-40v51h-39z"/>
+    <path d="M887 402V293h42v109h-42z"/>
+    <path d="M969 402v-109h210v33h-84v76h-42v-76h-84z"/>
+  </g>
+</svg>
