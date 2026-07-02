@@ -1,0 +1,1704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upstate Motors — Central New York</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
+
+/* ── SHARED NAV ── */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 48px; height:64px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.nav.scrolled { background:rgba(10,22,40,0.97); box-shadow:0 2px 20px rgba(0,0,0,0.3); }
+.nav-logo { font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:700; color:#fff; letter-spacing:2px; cursor:pointer; }
+.nav-logo span { color:#60a5fa; }
+.nav-links { display:flex; gap:32px; align-items:center; }
+.nav-link { color:rgba(255,255,255,0.7); font-size:13px; font-weight:500; cursor:pointer; letter-spacing:0.5px; transition:color 0.2s; text-decoration:none; }
+.nav-link:hover { color:#fff; }
+.nav-cta { background:#1d6fd4; color:#fff; border:none; padding:9px 22px; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:background 0.2s; }
+.nav-cta:hover { background:#2dd4bf; }
+
+/* ── PAGES ── */
+.page { display:none; }
+.page.active { display:block; }
+
+/* ══════════════════════════
+   MAIN / HOME PAGE
+══════════════════════════ */
+.home-hero {
+  height:100vh; position:relative; overflow:hidden;
+  background: linear-gradient(135deg, #060b14 0%, #0a1628 50%, #0f2044 100%);
+  display:flex; align-items:center;
+}
+.home-hero-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 70% 50%, rgba(29,111,212,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(13,158,138,0.08) 0%, transparent 50%);
+}
+.home-hero-content {
+  position:relative; z-index:2;
+  max-width:1200px; margin:0 auto; padding:0 48px;
+  width:100%;
+}
+.home-hero-eyebrow {
+  font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:#60a5fa; margin-bottom:16px; font-weight:600;
+}
+.home-hero-title {
+  font-family:'Rajdhani',sans-serif; font-size:72px; font-weight:700;
+  color:#fff; line-height:1.0; margin-bottom:16px;
+}
+.home-hero-title span { color:#60a5fa; }
+.home-hero-sub {
+  font-size:18px; color:rgba(255,255,255,0.6);
+  margin-bottom:40px; max-width:560px; line-height:1.6;
+}
+.home-hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+.btn-primary {
+  background:#1d6fd4; color:#fff; border:none;
+  padding:14px 32px; font-size:13px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s;
+}
+.btn-primary:hover { background:#2dd4bf; }
+.btn-outline {
+  background:transparent; color:#fff;
+  border:1px solid rgba(255,255,255,0.3);
+  padding:14px 32px; font-size:13px; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase;
+  cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s;
+}
+.btn-outline:hover { border-color:#60a5fa; color:#60a5fa; }
+
+/* NICHE CARDS ON HOME */
+.home-niches {
+  background:#f0f4f8; padding:80px 48px;
+}
+.home-niches-inner { max-width:1200px; margin:0 auto; }
+.section-eyebrow {
+  font-size:11px; letter-spacing:4px; text-transform:uppercase;
+  color:#1d6fd4; margin-bottom:10px; font-weight:600;
+}
+.section-heading {
+  font-family:'Rajdhani',sans-serif; font-size:42px; font-weight:700;
+  color:#0a1628; margin-bottom:12px;
+}
+.section-sub { font-size:15px; color:#4a5a72; margin-bottom:48px; max-width:500px; line-height:1.6; }
+
+.niche-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
+.niche-card-home {
+  border-radius:2px; overflow:hidden; cursor:pointer;
+  box-shadow:0 4px 24px rgba(10,22,40,0.10);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.niche-card-home:hover { transform:translateY(-4px); box-shadow:0 8px 32px rgba(10,22,40,0.18); }
+.niche-hero-img {
+  height:220px; background-size:cover; background-position:center;
+  position:relative; overflow:hidden;
+}
+.niche-hero-img::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%);
+}
+.niche-img-jeep {
+  background-image:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=80');
+}
+.niche-img-luxury {
+  background-image:url('https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&q=80');
+}
+.niche-img-family {
+  background-image:url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&q=80');
+}
+.niche-img-label {
+  position:absolute; bottom:14px; left:16px; z-index:1;
+  font-family:'Rajdhani',sans-serif; font-size:22px; font-weight:700;
+  color:#fff; letter-spacing:1px;
+}
+.niche-card-body { background:#fff; padding:20px 22px; }
+.niche-card-tag {
+  display:inline-block; font-size:9px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase; padding:3px 10px; margin-bottom:10px;
+}
+.tag-jeep { background:rgba(212,101,10,0.1); color:#d4650a; border:1px solid rgba(212,101,10,0.2); }
+.tag-luxury { background:rgba(184,150,12,0.1); color:#b8960c; border:1px solid rgba(184,150,12,0.2); }
+.tag-family { background:rgba(29,111,212,0.1); color:#1d6fd4; border:1px solid rgba(29,111,212,0.2); }
+.niche-card-title { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:#0a1628; margin-bottom:6px; }
+.niche-card-desc { font-size:12px; color:#4a5a72; line-height:1.6; margin-bottom:14px; }
+.niche-card-cta {
+  font-size:11px; font-weight:700; letter-spacing:1.5px;
+  text-transform:uppercase; cursor:pointer; border:none;
+  background:none; display:flex; align-items:center; gap:6px;
+  transition:gap 0.2s;
+}
+.cta-jeep { color:#d4650a; }
+.cta-luxury { color:#b8960c; }
+.cta-family { color:#1d6fd4; }
+.niche-card-home:hover .niche-card-cta { gap:10px; }
+
+/* STATS BAR */
+.stats-bar {
+  background:#0a1628; padding:48px;
+  display:grid; grid-template-columns:repeat(4,1fr);
+}
+.stats-bar-inner { max-width:1200px; margin:0 auto; width:100%; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.stat-item { text-align:center; padding:0 24px; border-right:1px solid rgba(255,255,255,0.08); }
+.stat-item:last-child { border-right:none; }
+.stat-num { font-family:'Rajdhani',sans-serif; font-size:48px; font-weight:700; color:#60a5fa; line-height:1; }
+.stat-label { font-size:12px; color:rgba(255,255,255,0.5); margin-top:6px; letter-spacing:1px; text-transform:uppercase; }
+
+/* INVENTORY PREVIEW */
+.inventory-section { background:#fff; padding:80px 48px; }
+.inventory-section-inner { max-width:1200px; margin:0 auto; }
+.inventory-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+.inv-card {
+  border:1px solid #e4eaf2; overflow:hidden;
+  box-shadow:0 2px 12px rgba(10,22,40,0.06);
+  transition:box-shadow 0.2s;
+}
+.inv-card:hover { box-shadow:0 6px 24px rgba(10,22,40,0.12); }
+.inv-img { height:180px; background-size:cover; background-position:center; position:relative; }
+.inv-badge {
+  position:absolute; top:12px; left:12px;
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; padding:3px 10px; background:#0a1628; color:#fff;
+}
+.inv-body { padding:16px 18px; }
+.inv-year { font-size:11px; color:#4a5a72; margin-bottom:3px; }
+.inv-name { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:#0a1628; margin-bottom:6px; }
+.inv-details { display:flex; gap:16px; font-size:11px; color:#4a5a72; margin-bottom:12px; }
+.inv-price { font-family:'Rajdhani',sans-serif; font-size:24px; font-weight:700; color:#1d6fd4; }
+.inv-cta { margin-top:12px; width:100%; background:#0a1628; color:#fff; border:none; padding:10px; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:background 0.2s; }
+.inv-cta:hover { background:#1d6fd4; }
+
+/* LEAD FORM SECTION */
+.lead-section { background:#f0f4f8; padding:80px 48px; }
+.lead-section-inner { max-width:700px; margin:0 auto; text-align:center; }
+.lead-form { background:#fff; padding:40px; box-shadow:0 4px 24px rgba(10,22,40,0.10); margin-top:40px; text-align:left; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.form-group { display:flex; flex-direction:column; gap:5px; }
+.form-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#4a5a72; font-weight:600; }
+.form-input, .form-select { border:1px solid #e4eaf2; padding:10px 14px; font-size:13px; font-family:'Inter',sans-serif; color:#0a1628; outline:none; width:100%; transition:border-color 0.2s; }
+.form-input:focus, .form-select:focus { border-color:#1d6fd4; }
+.form-select { background:#fff; }
+.form-submit { width:100%; background:#1d6fd4; color:#fff; border:none; padding:14px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; margin-top:6px; transition:background 0.2s; }
+.form-submit:hover { background:#0d9e8a; }
+
+/* FOOTER */
+.site-footer { background:#0a1628; padding:48px; }
+.site-footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; }
+.footer-brand .brand-name { font-family:'Rajdhani',sans-serif; font-size:24px; font-weight:700; color:#fff; letter-spacing:2px; margin-bottom:8px; }
+.footer-brand .brand-name span { color:#60a5fa; }
+.footer-brand p { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7; margin-bottom:16px; }
+.footer-col-title { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:14px; }
+.footer-col-link { display:block; font-size:12px; color:rgba(255,255,255,0.6); margin-bottom:8px; cursor:pointer; transition:color 0.2s; text-decoration:none; }
+.footer-col-link:hover { color:#60a5fa; }
+.footer-bottom { border-top:1px solid rgba(255,255,255,0.06); padding-top:20px; margin-top:40px; display:flex; justify-content:space-between; align-items:center; font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:1px; }
+.footer-bottom span { color:#60a5fa; }
+
+/* ══════════════════════════
+   JEEP LANDING PAGE
+══════════════════════════ */
+.jeep-hero {
+  height:100vh; position:relative; overflow:hidden;
+  display:flex; align-items:center;
+  background:#1a0f00;
+}
+.jeep-hero-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=1400&q=80');
+  background-size:cover; background-position:center;
+}
+.jeep-hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(10,8,0,0.85) 0%, rgba(26,15,0,0.70) 50%, rgba(0,0,0,0.40) 100%);
+}
+.jeep-hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 48px; width:100%; }
+.jeep-eyebrow { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#f97316; margin-bottom:16px; font-weight:700; }
+.jeep-title { font-family:'Rajdhani',sans-serif; font-size:76px; font-weight:700; color:#fff; line-height:1.0; margin-bottom:16px; }
+.jeep-title span { color:#f97316; }
+.jeep-sub { font-size:18px; color:rgba(255,255,255,0.7); margin-bottom:40px; max-width:500px; line-height:1.6; }
+.btn-jeep { background:#f97316; color:#000; border:none; padding:14px 36px; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s; }
+.btn-jeep:hover { background:#ea6a00; }
+.btn-jeep-outline { background:transparent; color:#fff; border:2px solid rgba(249,115,22,0.5); padding:14px 36px; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s; }
+.btn-jeep-outline:hover { border-color:#f97316; color:#f97316; }
+
+/* Jeep features section */
+.jeep-features { background:#0d0800; padding:80px 48px; }
+.jeep-features-inner { max-width:1200px; margin:0 auto; }
+.jeep-section-eyebrow { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#f97316; margin-bottom:10px; font-weight:600; }
+.jeep-section-heading { font-family:'Rajdhani',sans-serif; font-size:42px; font-weight:700; color:#fff; margin-bottom:12px; }
+.jeep-section-sub { font-size:15px; color:rgba(255,255,255,0.5); margin-bottom:48px; line-height:1.6; }
+.jeep-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; }
+.jeep-feat-card { background:#1a1000; border:1px solid rgba(249,115,22,0.15); border-top:3px solid #f97316; padding:24px; }
+.jeep-feat-icon { font-size:28px; margin-bottom:12px; }
+.jeep-feat-title { font-family:'Rajdhani',sans-serif; font-size:18px; font-weight:700; color:#fff; letter-spacing:1px; margin-bottom:8px; }
+.jeep-feat-desc { font-size:12px; color:rgba(255,255,255,0.5); line-height:1.6; }
+
+/* Jeep inventory */
+.jeep-inventory { background:#111008; padding:80px 48px; }
+.jeep-inventory-inner { max-width:1200px; margin:0 auto; }
+.jeep-inv-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:40px; }
+.jeep-inv-card { background:#1a1000; border:1px solid rgba(249,115,22,0.15); overflow:hidden; cursor:pointer; transition:border-color 0.2s; }
+.jeep-inv-card:hover { border-color:#f97316; }
+.jeep-inv-img { height:200px; background-size:cover; background-position:center; position:relative; }
+.jeep-inv-body { padding:16px 18px; }
+.jeep-inv-name { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:#fff; margin-bottom:4px; }
+.jeep-inv-details { font-size:11px; color:rgba(255,255,255,0.4); margin-bottom:10px; }
+.jeep-inv-price { font-family:'Rajdhani',sans-serif; font-size:26px; font-weight:700; color:#f97316; }
+.jeep-inv-btn { width:100%; background:#f97316; color:#000; border:none; padding:10px; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; margin-top:12px; font-family:'Inter',sans-serif; }
+
+/* Jeep lead form */
+.jeep-form-section { background:#0a0700; padding:80px 48px; }
+.jeep-form-inner { max-width:600px; margin:0 auto; text-align:center; }
+.jeep-form { background:#1a1000; border:1px solid rgba(249,115,22,0.2); padding:36px; margin-top:36px; text-align:left; }
+.jeep-form-input, .jeep-form-select { background:#0d0800; border:1px solid rgba(249,115,22,0.2); color:#fff; padding:10px 14px; font-size:13px; font-family:'Inter',sans-serif; outline:none; width:100%; transition:border-color 0.2s; }
+.jeep-form-input:focus, .jeep-form-select:focus { border-color:#f97316; }
+.jeep-form-select option { background:#0d0800; }
+.jeep-form-submit { width:100%; background:#f97316; color:#000; border:none; padding:14px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; margin-top:6px; }
+.jeep-form-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(249,115,22,0.7); font-weight:600; }
+
+/* ══════════════════════════
+   LUXURY LANDING PAGE
+══════════════════════════ */
+.luxury-hero {
+  height:100vh; position:relative; overflow:hidden;
+  display:flex; align-items:center; background:#000;
+}
+.luxury-hero-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.unsplash.com/photo-1563720223185-11003d516935?w=1400&q=80');
+  background-size:cover; background-position:center;
+}
+.luxury-hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.65) 60%, rgba(0,0,0,0.30) 100%);
+}
+.luxury-hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 48px; width:100%; }
+.luxury-eyebrow { font-size:11px; letter-spacing:6px; text-transform:uppercase; color:#d4af37; margin-bottom:16px; font-weight:600; }
+.luxury-title { font-family:'Rajdhani',sans-serif; font-size:76px; font-weight:700; color:#fff; line-height:1.0; margin-bottom:16px; letter-spacing:1px; }
+.luxury-title span { color:#d4af37; }
+.luxury-sub { font-size:18px; color:rgba(255,255,255,0.6); margin-bottom:40px; max-width:480px; line-height:1.7; font-weight:300; }
+.btn-luxury { background:#d4af37; color:#000; border:none; padding:14px 36px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s; }
+.btn-luxury:hover { background:#c9a227; }
+.btn-luxury-outline { background:transparent; color:#fff; border:1px solid rgba(212,175,55,0.4); padding:14px 36px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s; }
+.btn-luxury-outline:hover { border-color:#d4af37; color:#d4af37; }
+
+.luxury-features { background:#050505; padding:80px 48px; }
+.luxury-features-inner { max-width:1200px; margin:0 auto; }
+.luxury-eyebrow2 { font-size:11px; letter-spacing:5px; text-transform:uppercase; color:#d4af37; margin-bottom:10px; font-weight:600; }
+.luxury-heading { font-family:'Rajdhani',sans-serif; font-size:42px; font-weight:700; color:#fff; margin-bottom:12px; letter-spacing:1px; }
+.luxury-sub2 { font-size:15px; color:rgba(255,255,255,0.4); margin-bottom:48px; line-height:1.7; font-weight:300; }
+.luxury-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:rgba(212,175,55,0.1); }
+.luxury-feat { background:#0a0a0a; padding:32px; }
+.luxury-feat-icon { font-size:24px; margin-bottom:14px; color:#d4af37; }
+.luxury-feat-title { font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700; color:#fff; letter-spacing:2px; text-transform:uppercase; margin-bottom:8px; }
+.luxury-feat-desc { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7; font-weight:300; }
+
+.luxury-inventory { background:#000; padding:80px 48px; }
+.luxury-inventory-inner { max-width:1200px; margin:0 auto; }
+.luxury-inv-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:rgba(212,175,55,0.1); margin-top:40px; }
+.luxury-inv-card { background:#0a0a0a; padding:0; overflow:hidden; cursor:pointer; transition:background 0.2s; }
+.luxury-inv-card:hover { background:#111; }
+.luxury-inv-img { height:200px; background-size:cover; background-position:center; }
+.luxury-inv-body { padding:20px 22px; }
+.luxury-inv-name { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:#fff; letter-spacing:1px; margin-bottom:4px; }
+.luxury-inv-details { font-size:11px; color:rgba(255,255,255,0.3); margin-bottom:10px; letter-spacing:0.5px; }
+.luxury-inv-price { font-family:'Rajdhani',sans-serif; font-size:26px; font-weight:700; color:#d4af37; }
+.luxury-inv-btn { width:100%; background:transparent; color:#d4af37; border:1px solid rgba(212,175,55,0.3); padding:10px; font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; margin-top:12px; font-family:'Inter',sans-serif; transition:all 0.2s; }
+.luxury-inv-btn:hover { background:#d4af37; color:#000; }
+
+.luxury-form-section { background:#050505; padding:80px 48px; }
+.luxury-form-inner { max-width:580px; margin:0 auto; text-align:center; }
+.luxury-form { background:#0a0a0a; border:1px solid rgba(212,175,55,0.15); padding:40px; margin-top:36px; text-align:left; }
+.luxury-form-input, .luxury-form-select { background:#050505; border:1px solid rgba(212,175,55,0.15); color:#fff; padding:12px 16px; font-size:13px; font-family:'Inter',sans-serif; outline:none; width:100%; transition:border-color 0.2s; font-weight:300; }
+.luxury-form-input:focus, .luxury-form-select:focus { border-color:#d4af37; }
+.luxury-form-select option { background:#050505; }
+.luxury-form-submit { width:100%; background:#d4af37; color:#000; border:none; padding:14px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; margin-top:8px; }
+.luxury-form-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(212,175,55,0.6); font-weight:600; }
+
+/* ══════════════════════════
+   FAMILY LANDING PAGE
+══════════════════════════ */
+.family-hero {
+  height:100vh; position:relative; overflow:hidden;
+  display:flex; align-items:center;
+  background:#e8f0fe;
+}
+.family-hero-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1400&q=80');
+  background-size:cover; background-position:center;
+}
+.family-hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(10,22,40,0.82) 0%, rgba(10,22,40,0.65) 50%, rgba(10,22,40,0.20) 100%);
+}
+.family-hero-content { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:0 48px; width:100%; }
+.family-eyebrow { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:#60a5fa; margin-bottom:16px; font-weight:700; }
+.family-title { font-family:'Rajdhani',sans-serif; font-size:72px; font-weight:700; color:#fff; line-height:1.0; margin-bottom:16px; }
+.family-title span { color:#60a5fa; }
+.family-sub { font-size:18px; color:rgba(255,255,255,0.75); margin-bottom:40px; max-width:520px; line-height:1.6; }
+.btn-family { background:#1d6fd4; color:#fff; border:none; padding:14px 36px; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:background 0.2s; }
+.btn-family:hover { background:#1558b0; }
+.btn-family-outline { background:#fff; color:#0a1628; border:none; padding:14px 36px; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s; }
+.btn-family-outline:hover { background:#e4eaf2; }
+
+.family-trust { background:#fff; padding:60px 48px; }
+.family-trust-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+.trust-item { text-align:center; padding:24px; border:1px solid #e4eaf2; }
+.trust-icon { font-size:32px; margin-bottom:10px; }
+.trust-title { font-family:'Rajdhani',sans-serif; font-size:16px; font-weight:700; color:#0a1628; letter-spacing:1px; margin-bottom:6px; }
+.trust-desc { font-size:11px; color:#4a5a72; line-height:1.6; }
+
+.family-inventory { background:#f0f4f8; padding:80px 48px; }
+.family-inventory-inner { max-width:1200px; margin:0 auto; }
+.family-inv-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:40px; }
+.family-inv-card { background:#fff; border:1px solid #e4eaf2; overflow:hidden; cursor:pointer; box-shadow:0 2px 12px rgba(10,22,40,0.06); transition:box-shadow 0.2s; }
+.family-inv-card:hover { box-shadow:0 6px 24px rgba(10,22,40,0.12); }
+.family-inv-img { height:200px; background-size:cover; background-position:center; }
+.family-inv-body { padding:16px 18px; }
+.family-inv-name { font-family:'Rajdhani',sans-serif; font-size:20px; font-weight:700; color:#0a1628; margin-bottom:4px; }
+.family-inv-details { font-size:11px; color:#4a5a72; margin-bottom:10px; }
+.family-inv-price { font-family:'Rajdhani',sans-serif; font-size:26px; font-weight:700; color:#1d6fd4; }
+.family-inv-btn { width:100%; background:#0a1628; color:#fff; border:none; padding:10px; font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; margin-top:12px; font-family:'Inter',sans-serif; transition:background 0.2s; }
+.family-inv-btn:hover { background:#1d6fd4; }
+
+.family-form-section { background:#fff; padding:80px 48px; }
+.family-form-inner { max-width:620px; margin:0 auto; text-align:center; }
+.family-form { background:#f0f4f8; border:1px solid #e4eaf2; padding:36px; margin-top:36px; text-align:left; box-shadow:0 4px 24px rgba(10,22,40,0.08); }
+.family-form-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:#4a5a72; font-weight:600; }
+.family-form-input, .family-form-select { background:#fff; border:1px solid #e4eaf2; color:#0a1628; padding:10px 14px; font-size:13px; font-family:'Inter',sans-serif; outline:none; width:100%; transition:border-color 0.2s; }
+.family-form-input:focus, .family-form-select:focus { border-color:#1d6fd4; }
+.family-form-submit { width:100%; background:#1d6fd4; color:#fff; border:none; padding:14px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; margin-top:6px; transition:background 0.2s; }
+.family-form-submit:hover { background:#0a1628; }
+
+/* SHARED FORM SPACING */
+.form-group-gap { margin-bottom:14px; }
+
+/* AI CHAT BUBBLE */
+.chat-bubble {
+  position:fixed; bottom:28px; right:28px; z-index:200;
+  width:56px; height:56px; background:#1d6fd4; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; box-shadow:0 4px 20px rgba(29,111,212,0.4);
+  font-size:24px; transition:transform 0.2s;
+}
+.chat-bubble:hover { transform:scale(1.08); }
+.chat-window {
+  position:fixed; bottom:96px; right:28px; z-index:200;
+  width:320px; background:#fff; box-shadow:0 8px 40px rgba(10,22,40,0.2);
+  display:none; flex-direction:column; overflow:hidden;
+}
+.chat-window.open { display:flex; }
+.chat-header { background:#0a1628; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; }
+.chat-header-title { font-family:'Rajdhani',sans-serif; font-size:14px; font-weight:700; color:#fff; letter-spacing:1px; }
+.chat-header-sub { font-size:10px; color:rgba(255,255,255,0.4); }
+.chat-close { color:rgba(255,255,255,0.4); cursor:pointer; font-size:18px; line-height:1; }
+.chat-messages { flex:1; padding:16px; max-height:280px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; }
+.chat-msg { max-width:80%; }
+.chat-msg.bot { align-self:flex-start; }
+.chat-msg.user { align-self:flex-end; }
+.chat-msg-bubble { padding:10px 14px; font-size:12px; line-height:1.5; }
+.chat-msg.bot .chat-msg-bubble { background:#f0f4f8; color:#0a1628; }
+.chat-msg.user .chat-msg-bubble { background:#1d6fd4; color:#fff; }
+.chat-input-row { border-top:1px solid #e4eaf2; display:flex; }
+.chat-input { flex:1; border:none; padding:12px 14px; font-size:12px; font-family:'Inter',sans-serif; outline:none; color:#0a1628; }
+.chat-send { background:#1d6fd4; color:#fff; border:none; padding:12px 16px; cursor:pointer; font-size:16px; }
+
+/* HIDDEN CAR ICON */
+.secret-car {
+  position: fixed;
+  bottom: 96px;
+  left: 28px;
+  width: 36px;
+  height: 36px;
+  background: rgba(10,22,40,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  z-index: 150;
+  transition: all 0.2s;
+  opacity: 0.4;
+}
+.secret-car:hover { opacity: 1; background: rgba(29,111,212,0.8); border-color: var(--blue,#1d6fd4); }
+
+/* HUB OVERLAY */
+.hub-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.hub-overlay.open { display: flex; }
+.hub-container {
+  width: 95vw;
+  height: 92vh;
+  background: #000;
+  border: 1px solid rgba(59,130,246,0.35);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.hub-topbar {
+  background: #060b14;
+  border-bottom: 1px solid rgba(59,130,246,0.35);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.hub-topbar-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #eef2ff;
+  letter-spacing: 1px;
+}
+.hub-topbar-title span { color: #60a5fa; }
+.hub-close {
+  background: rgba(232,23,93,0.15);
+  border: 1px solid rgba(232,23,93,0.3);
+  color: #E8175D;
+  padding: 5px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+}
+.hub-close:hover { background: rgba(232,23,93,0.3); }
+.hub-iframe-container { flex: 1; overflow: hidden; }
+.hub-iframe-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="main-nav">
+  <div class="nav-logo" onclick="showPage('home')">UPSTATE<span>MOTORS</span></div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="showPage('jeep')">🐾 Jeep</a>
+    <a class="nav-link" onclick="showPage('luxury')">⭐ Luxury</a>
+    <a class="nav-link" onclick="showPage('family')">👨‍👩‍👧‍👦 Family</a>
+    <a class="nav-link" onclick="showPage('home')">Inventory</a>
+    <button class="nav-cta" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Get In Touch</button>
+  </div>
+</nav>
+
+<!-- ══ HOME PAGE ══ -->
+<div class="page active" id="page-home">
+
+  <div class="home-hero">
+    <div class="home-hero-bg"></div>
+    <div class="home-hero-content">
+      <div class="home-hero-eyebrow">Central New York's Premier Used Auto Dealer</div>
+      <div class="home-hero-title">Your Next Ride<br><span>Starts Here.</span></div>
+      <div class="home-hero-sub">Jeeps built for the trail. Luxury vehicles built for the road. Family vehicles built for life. Find your perfect match at Upstate Motors.</div>
+      <div class="home-hero-btns">
+        <button class="btn-primary" onclick="document.querySelector('.home-niches').scrollIntoView({behavior:'smooth'})">Browse Inventory</button>
+        <button class="btn-outline" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stats-bar-inner">
+      <div class="stat-item"><div class="stat-num">10–15</div><div class="stat-label">Vehicles in Stock</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Niche Collections</div></div>
+      <div class="stat-item"><div class="stat-num">$8K–$20K</div><div class="stat-label">Price Range</div></div>
+      <div class="stat-item"><div class="stat-num">CNY</div><div class="stat-label">Central New York</div></div>
+    </div>
+  </div>
+
+  <div class="home-niches">
+    <div class="home-niches-inner">
+      <div class="section-eyebrow">Shop by Collection</div>
+      <div class="section-heading">Three Niches.<br>One Dealership.</div>
+      <div class="section-sub">Whether you're hitting the trails, turning heads on the avenue, or loading up the family — we have the right vehicle for your life.</div>
+      <div class="niche-cards">
+        <div class="niche-card-home" onclick="showPage('jeep')">
+          <div class="niche-hero-img niche-img-jeep">
+            <div class="niche-img-label">Jeep Collection</div>
+          </div>
+          <div class="niche-card-body">
+            <span class="niche-card-tag tag-jeep">Trail Ready</span>
+            <div class="niche-card-title">Find Your Next Trail Rig</div>
+            <div class="niche-card-desc">Wranglers, Cherokees, Gladiators — inspected, priced right, and ready for whatever the trail throws at them.</div>
+            <div class="niche-card-cta cta-jeep">View Jeep Inventory →</div>
+          </div>
+        </div>
+        <div class="niche-card-home" onclick="showPage('luxury')">
+          <div class="niche-hero-img niche-img-luxury">
+            <div class="niche-img-label">Luxury Collection</div>
+          </div>
+          <div class="niche-card-body">
+            <span class="niche-card-tag tag-luxury">Premium</span>
+            <div class="niche-card-title">Drive Something Different</div>
+            <div class="niche-card-desc">Mercedes-Benz and premium luxury vehicles. CPO quality at pre-owned prices. White glove experience from first inquiry to keys in hand.</div>
+            <div class="niche-card-cta cta-luxury">View Luxury Inventory →</div>
+          </div>
+        </div>
+        <div class="niche-card-home" onclick="showPage('family')">
+          <div class="niche-hero-img niche-img-family">
+            <div class="niche-img-label">Family Collection</div>
+          </div>
+          <div class="niche-card-body">
+            <span class="niche-card-tag tag-family">Family Ready</span>
+            <div class="niche-card-title">The Right Fit For Your Family</div>
+            <div class="niche-card-desc">Reliable minivans and family SUVs. Safety-rated, Carfax verified, priced for real families. Because the right vehicle changes everything.</div>
+            <div class="niche-card-cta cta-family">View Family Inventory →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inventory-section">
+    <div class="inventory-section-inner">
+      <div class="section-eyebrow">Featured Inventory</div>
+      <div class="section-heading">What's On The Lot</div>
+      <div class="inventory-grid">
+        <div class="inv-card">
+          <div class="inv-img" style="background-image:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&q=80');">
+            <div class="inv-badge">Jeep</div>
+          </div>
+          <div class="inv-body">
+            <div class="inv-year">2022 · 38,000 miles</div>
+            <div class="inv-name">Wrangler Unlimited Sport</div>
+            <div class="inv-details"><span>4x4</span><span>·</span><span>Black</span><span>·</span><span>Clean Carfax</span></div>
+            <div class="inv-price">$34,900</div>
+            <button class="inv-cta">Inquire Now</button>
+          </div>
+        </div>
+        <div class="inv-card">
+          <div class="inv-img" style="background-image:url('https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&q=80');">
+            <div class="inv-badge">Luxury</div>
+          </div>
+          <div class="inv-body">
+            <div class="inv-year">2021 · 28,000 miles</div>
+            <div class="inv-name">Mercedes-Benz GLC 300</div>
+            <div class="inv-details"><span>AWD</span><span>·</span><span>Silver</span><span>·</span><span>One Owner</span></div>
+            <div class="inv-price">$38,500</div>
+            <button class="inv-cta">Inquire Now</button>
+          </div>
+        </div>
+        <div class="inv-card">
+          <div class="inv-img" style="background-image:url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80');">
+            <div class="inv-badge">Family</div>
+          </div>
+          <div class="inv-body">
+            <div class="inv-year">2022 · 31,000 miles</div>
+            <div class="inv-name">Toyota Sienna XLE</div>
+            <div class="inv-details"><span>AWD</span><span>·</span><span>Pearl White</span><span>·</span><span>Carfax Verified</span></div>
+            <div class="inv-price">$36,900</div>
+            <button class="inv-cta">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lead-section" id="contact-form">
+    <div class="lead-section-inner">
+      <div class="section-eyebrow">Get In Touch</div>
+      <div class="section-heading">Find Your Next Vehicle</div>
+      <div style="font-size:14px;color:#4a5a72;line-height:1.6;">Tell us what you're looking for and we'll reach out within the hour.</div>
+      <div class="lead-form">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input class="form-input" placeholder="John"></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" placeholder="Smith"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Phone</label><input class="form-input" placeholder="(315) 555-0000"></div>
+          <div class="form-group"><label class="form-label">Email</label><input class="form-input" placeholder="john@email.com"></div>
+        </div>
+        <div class="form-group form-group-gap"><label class="form-label">I'm Interested In</label>
+          <select class="form-select"><option>Jeep / Off-Road</option><option>Luxury / Mercedes</option><option>Family Vehicle / Minivan</option><option>Not Sure Yet</option></select>
+        </div>
+        <div class="form-group form-group-gap"><label class="form-label">Message (optional)</label><input class="form-input" placeholder="Tell us what you're looking for..."></div>
+        <button class="form-submit" onclick="alert('Thank you! Edward will be in touch within the hour.')">Send My Inquiry →</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="footer-brand">
+        <div class="brand-name">UPSTATE<span>MOTORS</span></div>
+        <p>Central New York's trusted source for quality used vehicles. Jeep, Luxury, and Family vehicles — inspected, priced right, and backed by real service.</p>
+        <div style="font-size:11px;color:rgba(255,255,255,0.3);">Also find us at DirtRoadsAndDreams.com</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Collections</div>
+        <a class="footer-col-link" onclick="showPage('jeep')">🐾 Jeep Collection</a>
+        <a class="footer-col-link" onclick="showPage('luxury')">⭐ Luxury Collection</a>
+        <a class="footer-col-link" onclick="showPage('family')">👨‍👩‍👧‍👦 Family Collection</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <a class="footer-col-link">Central New York</a>
+        <a class="footer-col-link">Facebook Marketplace</a>
+        <a class="footer-col-link">Instagram</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Powered By</div>
+        <a class="footer-col-link" href="https://jawsai911.com" target="_blank">JAWSAI911.com</a>
+        <a class="footer-col-link">AI-Powered Marketing</a>
+        <a class="footer-col-link">Complete Care Marketing</a>
+      </div>
+    </div>
+    <div class="footer-bottom" style="max-width:1200px;margin:0 auto;">
+      <span>© 2026 Upstate Motors — Central New York</span>
+      <span>Powered by <span>JAWSAI911.COM</span></span>
+    </div>
+  </footer>
+</div>
+
+<!-- ══ JEEP PAGE ══ -->
+<div class="page" id="page-jeep">
+  <div class="jeep-hero">
+    <div class="jeep-hero-bg"></div>
+    <div class="jeep-hero-overlay"></div>
+    <div class="jeep-hero-content">
+      <div class="jeep-eyebrow">🐾 Jeep Collection — Upstate Motors</div>
+      <div class="jeep-title">Built For The<br><span>Trail.</span></div>
+      <div class="jeep-sub">Wranglers, Cherokees, Gladiators — inspected, priced right, and ready for whatever Central NY throws at them.</div>
+      <div style="display:flex;gap:16px;">
+        <button class="btn-jeep" onclick="document.querySelector('.jeep-inventory').scrollIntoView({behavior:'smooth'})">View Inventory</button>
+        <button class="btn-jeep-outline" onclick="document.querySelector('.jeep-form-section').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="jeep-features">
+    <div class="jeep-features-inner">
+      <div class="jeep-section-eyebrow">Why Upstate Motors For Your Jeep</div>
+      <div class="jeep-section-heading">We Know Jeeps.</div>
+      <div class="jeep-section-sub">Central NY trails, upstate winters, real 4x4 buyers. We stock and inspect Jeeps the way Jeep people expect them.</div>
+      <div class="jeep-grid">
+        <div class="jeep-feat-card"><div class="jeep-feat-icon">🔧</div><div class="jeep-feat-title">Fully Inspected</div><div class="jeep-feat-desc">Every Jeep goes through a full mechanical inspection before it hits our lot. You know exactly what you're getting.</div></div>
+        <div class="jeep-feat-card"><div class="jeep-feat-icon">📋</div><div class="jeep-feat-title">Carfax on Every Unit</div><div class="jeep-feat-desc">Full vehicle history report included. No surprises. No hidden stories. Just the facts on every Jeep we sell.</div></div>
+        <div class="jeep-feat-card"><div class="jeep-feat-icon">🏔️</div><div class="jeep-feat-title">Trail-Ready Stock</div><div class="jeep-feat-desc">We specifically source Jeeps built for upstate terrain. Lifted builds, steel bumpers, capable setups — not just stock commuters.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jeep-inventory">
+    <div class="jeep-inventory-inner">
+      <div class="jeep-section-eyebrow">Current Inventory</div>
+      <div class="jeep-section-heading" style="color:#fff;">Jeeps On The Lot</div>
+      <div class="jeep-inv-grid">
+        <div class="jeep-inv-card">
+          <div class="jeep-inv-img" style="background-image:url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&q=80');"></div>
+          <div class="jeep-inv-body">
+            <div class="jeep-inv-name">2022 Wrangler Unlimited</div>
+            <div class="jeep-inv-details">38,000 mi · 4x4 · Black · Clean Carfax</div>
+            <div class="jeep-inv-price">$34,900</div>
+            <button class="jeep-inv-btn" onclick="document.querySelector('.jeep-form-section').scrollIntoView({behavior:'smooth'})">Inquire Now</button>
+          </div>
+        </div>
+        <div class="jeep-inv-card">
+          <div class="jeep-inv-img" style="background-image:url('https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=400&q=80');"></div>
+          <div class="jeep-inv-body">
+            <div class="jeep-inv-name">2021 Cherokee Trailhawk</div>
+            <div class="jeep-inv-details">42,000 mi · 4x4 · Red · One Owner</div>
+            <div class="jeep-inv-price">$28,500</div>
+            <button class="jeep-inv-btn" onclick="document.querySelector('.jeep-form-section').scrollIntoView({behavior:'smooth'})">Inquire Now</button>
+          </div>
+        </div>
+        <div class="jeep-inv-card">
+          <div class="jeep-inv-img" style="background-image:url('https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=400&q=80');"></div>
+          <div class="jeep-inv-body">
+            <div class="jeep-inv-name">2020 Gladiator Sport</div>
+            <div class="jeep-inv-details">51,000 mi · 4x4 · Granite · Lifted</div>
+            <div class="jeep-inv-price">$31,900</div>
+            <button class="jeep-inv-btn" onclick="document.querySelector('.jeep-form-section').scrollIntoView({behavior:'smooth'})">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="jeep-form-section">
+    <div class="jeep-form-inner">
+      <div class="jeep-section-eyebrow">Ready To Roll?</div>
+      <div class="jeep-section-heading" style="color:#fff;">Let's Find Your Jeep</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.5);">Tell us what you're after and we'll reach out within the hour.</div>
+      <div class="jeep-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+          <div class="form-group"><label class="jeep-form-label" style="color:rgba(249,115,22,0.7);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:4px;">Name</label><input class="jeep-form-input" placeholder="Your name"></div>
+          <div class="form-group"><label class="jeep-form-label" style="color:rgba(249,115,22,0.7);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:4px;">Phone</label><input class="jeep-form-input" placeholder="(315) 555-0000"></div>
+        </div>
+        <div style="margin-bottom:12px;"><label style="color:rgba(249,115,22,0.7);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:4px;">Which Jeep Interests You?</label>
+          <select class="jeep-form-select"><option>2022 Wrangler Unlimited — $34,900</option><option>2021 Cherokee Trailhawk — $28,500</option><option>2020 Gladiator Sport — $31,900</option><option>Show me everything</option></select>
+        </div>
+        <button class="jeep-form-submit" onclick="alert('Got it! Edward will reach out within the hour. 🐾')">Send Inquiry — Let's Talk Jeeps →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LUXURY PAGE ══ -->
+<div class="page" id="page-luxury">
+  <div class="luxury-hero">
+    <div class="luxury-hero-bg"></div>
+    <div class="luxury-hero-overlay"></div>
+    <div class="luxury-hero-content">
+      <div class="luxury-eyebrow">⭐ Luxury Collection — Upstate Motors</div>
+      <div class="luxury-title">Drive Something<br><span>Different.</span></div>
+      <div class="luxury-sub">Mercedes-Benz and premium luxury vehicles. CPO quality at pre-owned prices. Because you've earned something exceptional.</div>
+      <div style="display:flex;gap:16px;">
+        <button class="btn-luxury" onclick="document.querySelector('.luxury-inventory').scrollIntoView({behavior:'smooth'})">View Collection</button>
+        <button class="btn-luxury-outline" onclick="document.querySelector('.luxury-form-section').scrollIntoView({behavior:'smooth'})">Private Inquiry</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="luxury-features">
+    <div class="luxury-features-inner">
+      <div class="luxury-eyebrow2">The Upstate Motors Difference</div>
+      <div class="luxury-heading">White Glove.<br>Pre-Owned Prices.</div>
+      <div class="luxury-sub2">We source, inspect, and present luxury vehicles the way their original owners expected them to be treated.</div>
+      <div class="luxury-grid">
+        <div class="luxury-feat"><div class="luxury-feat-icon">⭐</div><div class="luxury-feat-title">Certified Quality</div><div class="luxury-feat-desc">Every luxury vehicle is fully inspected, detailed, and Carfax verified before it reaches you.</div></div>
+        <div class="luxury-feat"><div class="luxury-feat-icon">🤝</div><div class="luxury-feat-title">White Glove Service</div><div class="luxury-feat-desc">From first inquiry to keys in hand — a buying experience that matches the vehicle you're purchasing.</div></div>
+        <div class="luxury-feat"><div class="luxury-feat-icon">💰</div><div class="luxury-feat-title">Pre-Owned Value</div><div class="luxury-feat-desc">New luxury pricing without the new luxury price tag. The same prestige at a fraction of the cost.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="luxury-inventory">
+    <div class="luxury-inventory-inner">
+      <div class="luxury-eyebrow2">Current Collection</div>
+      <div class="luxury-heading" style="color:#fff;">In The Showroom</div>
+      <div class="luxury-inv-grid">
+        <div class="luxury-inv-card">
+          <div class="luxury-inv-img" style="background-image:url('https://images.unsplash.com/photo-1563720223185-11003d516935?w=400&q=80');"></div>
+          <div class="luxury-inv-body">
+            <div class="luxury-inv-name">Mercedes-Benz GLC 300</div>
+            <div class="luxury-inv-details">2021 · 28,000 mi · AWD · Silver · One Owner</div>
+            <div class="luxury-inv-price">$38,500</div>
+            <button class="luxury-inv-btn" onclick="document.querySelector('.luxury-form-section').scrollIntoView({behavior:'smooth'})">Private Inquiry</button>
+          </div>
+        </div>
+        <div class="luxury-inv-card">
+          <div class="luxury-inv-img" style="background-image:url('https://images.unsplash.com/photo-1617788138017-80ad40651399?w=400&q=80');"></div>
+          <div class="luxury-inv-body">
+            <div class="luxury-inv-name">Mercedes-Benz E 350</div>
+            <div class="luxury-inv-details">2020 · 34,000 mi · RWD · Black · CPO</div>
+            <div class="luxury-inv-price">$34,900</div>
+            <button class="luxury-inv-btn" onclick="document.querySelector('.luxury-form-section').scrollIntoView({behavior:'smooth'})">Private Inquiry</button>
+          </div>
+        </div>
+        <div class="luxury-inv-card">
+          <div class="luxury-inv-img" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=400&q=80');"></div>
+          <div class="luxury-inv-body">
+            <div class="luxury-inv-name">Mercedes-Benz C 300</div>
+            <div class="luxury-inv-details">2022 · 19,000 mi · AWD · White · Like New</div>
+            <div class="luxury-inv-price">$42,900</div>
+            <button class="luxury-inv-btn" onclick="document.querySelector('.luxury-form-section').scrollIntoView({behavior:'smooth'})">Private Inquiry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="luxury-form-section">
+    <div class="luxury-form-inner">
+      <div class="luxury-eyebrow2">Private Inquiry</div>
+      <div class="luxury-heading" style="color:#fff;font-size:36px;">Request a Private Showing</div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.4);font-weight:300;">Discreet, personal service. We'll be in touch within the hour.</div>
+      <div class="luxury-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+          <div><label style="color:rgba(212,175,55,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:5px;">Name</label><input class="luxury-form-input" placeholder="Your name"></div>
+          <div><label style="color:rgba(212,175,55,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:5px;">Phone</label><input class="luxury-form-input" placeholder="(315) 555-0000"></div>
+        </div>
+        <div style="margin-bottom:12px;"><label style="color:rgba(212,175,55,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:5px;">Vehicle of Interest</label>
+          <select class="luxury-form-select"><option>Mercedes-Benz GLC 300 — $38,500</option><option>Mercedes-Benz E 350 — $34,900</option><option>Mercedes-Benz C 300 — $42,900</option><option>Show me all luxury options</option></select>
+        </div>
+        <button class="luxury-form-submit" onclick="alert('Your inquiry has been received. Edward will be in touch shortly. ⭐')">Request Private Showing →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FAMILY PAGE ══ -->
+<div class="page" id="page-family">
+  <div class="family-hero">
+    <div class="family-hero-bg"></div>
+    <div class="family-hero-overlay"></div>
+    <div class="family-hero-content">
+      <div class="family-eyebrow">👨‍👩‍👧‍👦 Family Collection — Upstate Motors</div>
+      <div class="family-title">The Right Fit<br>For Your <span>Family.</span></div>
+      <div class="family-sub">Reliable minivans and family SUVs. Safety-rated, Carfax verified, priced for real families. Because the right vehicle changes everything.</div>
+      <div style="display:flex;gap:16px;">
+        <button class="btn-family" onclick="document.querySelector('.family-inventory').scrollIntoView({behavior:'smooth'})">View Family Vehicles</button>
+        <button class="btn-family-outline" onclick="document.querySelector('.family-form-section').scrollIntoView({behavior:'smooth'})">Get In Touch</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="family-trust">
+    <div class="family-trust-inner">
+      <div class="trust-item"><div class="trust-icon">🛡️</div><div class="trust-title">Safety First</div><div class="trust-desc">Every family vehicle is safety-rated and fully inspected before hitting our lot.</div></div>
+      <div class="trust-item"><div class="trust-icon">📋</div><div class="trust-title">Carfax Verified</div><div class="trust-desc">Full vehicle history on every unit. No hidden accidents, no surprises.</div></div>
+      <div class="trust-item"><div class="trust-icon">💰</div><div class="trust-title">Family Pricing</div><div class="trust-desc">Fair prices without the dealership games. What you see is what you pay.</div></div>
+      <div class="trust-item"><div class="trust-icon">🤝</div><div class="trust-title">Real Service</div><div class="trust-desc">You're not a number. Edward knows your name and your family's needs.</div></div>
+    </div>
+  </div>
+
+  <div class="family-inventory">
+    <div class="family-inventory-inner">
+      <div class="section-eyebrow">Family Vehicles</div>
+      <div class="section-heading">Ready For Your Family</div>
+      <div class="family-inv-grid">
+        <div class="family-inv-card">
+          <div class="family-inv-img" style="background-image:url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=400&q=80');"></div>
+          <div class="family-inv-body">
+            <div class="family-inv-name">Toyota Sienna XLE</div>
+            <div class="family-inv-details">2022 · 31,000 mi · AWD · Pearl White · Carfax Verified</div>
+            <div class="family-inv-price">$36,900</div>
+            <button class="family-inv-btn" onclick="document.querySelector('.family-form-section').scrollIntoView({behavior:'smooth'})">Inquire Now</button>
+          </div>
+        </div>
+        <div class="family-inv-card">
+          <div class="family-inv-img" style="background-image:url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=400&q=80');"></div>
+          <div class="family-inv-body">
+            <div class="family-inv-name">Honda Odyssey EX-L</div>
+            <div class="family-inv-details">2021 · 44,000 mi · FWD · Blue · One Owner</div>
+            <div class="family-inv-price">$29,900</div>
+            <button class="family-inv-btn" onclick="document.querySelector('.family-form-section').scrollIntoView({behavior:'smooth'})">Inquire Now</button>
+          </div>
+        </div>
+        <div class="family-inv-card">
+          <div class="family-inv-img" style="background-image:url('https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=400&q=80');"></div>
+          <div class="family-inv-body">
+            <div class="family-inv-name">Chrysler Pacifica Touring</div>
+            <div class="family-inv-details">2022 · 27,000 mi · FWD · Silver · Clean Title</div>
+            <div class="family-inv-price">$27,500</div>
+            <button class="family-inv-btn" onclick="document.querySelector('.family-form-section').scrollIntoView({behavior:'smooth'})">Inquire Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="family-form-section">
+    <div class="family-form-inner">
+      <div class="section-eyebrow">Let's Find Your Family Vehicle</div>
+      <div class="section-heading">Tell Us What You Need</div>
+      <div style="font-size:14px;color:#4a5a72;">We'll reach out within the hour with options that fit your family.</div>
+      <div class="family-form">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+          <div><label class="family-form-label" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:4px;">Name</label><input class="family-form-input" placeholder="Your name"></div>
+          <div><label class="family-form-label" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:4px;">Phone</label><input class="family-form-input" placeholder="(315) 555-0000"></div>
+        </div>
+        <div style="margin-bottom:12px;"><label style="font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:4px;color:#4a5a72;">Vehicle of Interest</label>
+          <select class="family-form-select"><option>Toyota Sienna XLE — $36,900</option><option>Honda Odyssey EX-L — $29,900</option><option>Chrysler Pacifica Touring — $27,500</option><option>Show me all family vehicles</option></select>
+        </div>
+        <button class="family-form-submit" onclick="alert('Perfect! Edward will be in touch within the hour. 👨‍👩‍👧‍👦')">Send Inquiry →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI CHAT -->
+<div class="chat-bubble" onclick="toggleChat()" id="chat-btn">💬</div>
+<div class="chat-window" id="chat-window">
+  <div class="chat-header">
+    <div><div class="chat-header-title">Upstate Motors</div><div class="chat-header-sub">Typically replies within the hour</div></div>
+    <div class="chat-close" onclick="toggleChat()">×</div>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-msg bot"><div class="chat-msg-bubble">Hey! 👋 Welcome to Upstate Motors. Are you looking for a Jeep, a luxury vehicle, or a family vehicle today?</div></div>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()">↑</button>
+  </div>
+</div>
+
+<script>
+// PAGE ROUTING
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  window.scrollTo(0,0);
+  // Update nav color based on page
+  const nav = document.getElementById('main-nav');
+  if (page === 'jeep') {
+    nav.style.background = 'rgba(10,8,0,0.95)';
+  } else if (page === 'luxury') {
+    nav.style.background = 'rgba(0,0,0,0.95)';
+  } else if (page === 'family') {
+    nav.style.background = 'rgba(10,22,40,0.95)';
+  } else {
+    nav.style.background = '';
+  }
+}
+
+// NAV SCROLL
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  const activePage = document.querySelector('.page.active').id;
+  if (window.scrollY > 80) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+    if (activePage === 'page-jeep') nav.style.background = 'rgba(10,8,0,0.95)';
+    else if (activePage === 'page-luxury') nav.style.background = 'rgba(0,0,0,0.95)';
+    else if (activePage === 'page-family') nav.style.background = 'rgba(10,22,40,0.95)';
+    else nav.style.background = '';
+  }
+});
+
+// CHAT
+function toggleChat() {
+  const w = document.getElementById('chat-window');
+  w.classList.toggle('open');
+  if (w.classList.contains('open')) {
+    document.getElementById('chat-input').focus();
+  }
+}
+
+const chatResponses = [
+  "Great choice! We have several in stock right now. What's most important to you — mileage, price, or specific features?",
+  "That's a popular question! Let me connect you with Edward directly. What's the best number to reach you?",
+  "We typically respond within the hour. Edward personally handles every inquiry — no call centers, no runaround.",
+  "We have a few options that might be perfect for you. Can you tell me a bit more about what you're looking for?",
+  "Absolutely! We can arrange a test drive at your convenience. Are mornings or afternoons better for you?",
+  "Great news — that vehicle is still available! Want me to have Edward reach out to you directly?"
+];
+
+let chatIdx = 0;
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  const msgs = document.getElementById('chat-messages');
+  msgs.innerHTML += `<div class="chat-msg user"><div class="chat-msg-bubble">${msg}</div></div>`;
+  input.value = '';
+  setTimeout(() => {
+    const resp = chatResponses[chatIdx % chatResponses.length];
+    chatIdx++;
+    msgs.innerHTML += `<div class="chat-msg bot"><div class="chat-msg-bubble">${resp}</div></div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 800);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+const HUB_CONTENT = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dealer Command Hub</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+:root{--bg:#000;--bg2:#060b14;--bg3:#0a1120;--s1:#0d1525;--s2:#111f35;--blue:#3b82f6;--blue2:#60a5fa;--teal:#2dd4bf;--amber:#f59e0b;--pink:#E8175D;--text:#eef2ff;--muted:#7b8db0;--dim:#3d4f6e;--border:rgba(59,130,246,0.15);--border2:rgba(59,130,246,0.35);--jeep:#f97316;--luxury:#d4af37;--van:#3b82f6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;min-height:100vh;}
+
+/* LAYOUT */
+.shell{display:grid;grid-template-columns:220px 1fr;min-height:100vh;}
+.sidebar{background:var(--bg2);border-right:1px solid var(--border2);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;}
+.sidebar-logo{padding:20px 18px;border-bottom:1px solid var(--border);}
+.sidebar-logo .brand{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--text);letter-spacing:1px;}
+.sidebar-logo .brand span{color:var(--blue);}
+.sidebar-logo .sub{font-size:9px;color:var(--teal);letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+.sidebar-status{padding:10px 18px;background:rgba(45,212,191,0.08);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.status-dot{width:8px;height:8px;background:var(--teal);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.status-text{font-size:10px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;}
+.nav{flex:1;padding:12px 0;overflow-y:auto;}
+.nav-section{padding:8px 18px 4px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
+.nav-item{padding:9px 18px;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);transition:all 0.2s;border-left:2px solid transparent;}
+.nav-item:hover{background:rgba(59,130,246,0.06);color:var(--text);}
+.nav-item.active{background:rgba(59,130,246,0.10);color:var(--blue2);border-left-color:var(--blue);}
+.nav-item .icon{font-size:14px;width:18px;text-align:center;}
+.nav-badge{margin-left:auto;background:var(--teal);color:#000;font-size:9px;font-weight:700;padding:1px 6px;letter-spacing:1px;}
+
+.main{overflow-y:auto;}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;}
+.topbar-title{font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;color:var(--text);letter-spacing:1px;}
+.topbar-title span{color:var(--blue);}
+.topbar-right{display:flex;align-items:center;gap:12px;}
+.topbar-badge{font-size:10px;color:var(--muted);background:var(--s1);border:1px solid var(--border);padding:4px 12px;letter-spacing:1px;}
+
+.content{padding:28px;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* CARDS */
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+.metric{background:var(--s1);border:1px solid var(--border);border-top:2px solid var(--blue);padding:16px;}
+.metric-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.metric-value{font-family:'Rajdhani',sans-serif;font-size:28px;font-weight:700;color:var(--blue);line-height:1;}
+.metric-sub{font-size:11px;color:var(--muted);margin-top:3px;}
+
+/* PIPELINE */
+.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+.pipeline-col{background:var(--s1);border:1px solid var(--border);}
+.pipeline-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.pipeline-col-name{font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--text);}
+.pipeline-count{font-size:10px;color:var(--muted);background:var(--bg2);border:1px solid var(--border);padding:1px 8px;}
+.pipeline-body{padding:10px;min-height:120px;display:flex;flex-direction:column;gap:8px;}
+.lead-card{background:var(--bg2);border:1px solid var(--border);padding:10px 12px;cursor:pointer;}
+.lead-card:hover{border-color:var(--blue);}
+.lead-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px;}
+.lead-meta{font-size:10px;color:var(--muted);}
+.lead-niche{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;letter-spacing:1px;margin-top:4px;}
+.niche-jeep{background:rgba(249,115,22,0.15);color:var(--jeep);border:1px solid rgba(249,115,22,0.3);}
+.niche-luxury{background:rgba(212,175,55,0.15);color:var(--luxury);border:1px solid rgba(212,175,55,0.3);}
+.niche-van{background:rgba(59,130,246,0.15);color:var(--van);border:1px solid rgba(59,130,246,0.3);}
+.lead-score{float:right;font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--teal);}
+
+/* ADD LEAD FORM */
+.add-lead-form{background:var(--s1);border:1px solid var(--border);padding:20px;margin-bottom:20px;}
+.form-title{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:1px;margin-bottom:16px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px;}
+.form-group{display:flex;flex-direction:column;gap:4px;}
+.form-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.form-input,.form-select{background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:8px 12px;font-size:12px;font-family:'Inter',sans-serif;outline:none;width:100%;}
+.form-input:focus,.form-select:focus{border-color:var(--blue);}
+.form-select option{background:var(--bg2);}
+.btn{background:var(--blue);color:#fff;border:none;padding:9px 20px;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;}
+.btn:hover{background:var(--teal);color:#000;}
+.btn-sm{padding:6px 14px;font-size:10px;}
+.btn-outline{background:transparent;border:1px solid var(--border2);color:var(--muted);}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);background:transparent;}
+
+/* AGENTS */
+.agent-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.agent-card{background:var(--s1);border:1px solid var(--border);padding:18px;position:relative;}
+.agent-card .live-badge{position:absolute;top:12px;right:12px;font-size:9px;font-weight:700;letter-spacing:2px;color:var(--teal);background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.3);padding:2px 8px;}
+.agent-icon{font-size:26px;margin-bottom:10px;}
+.agent-name{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:1px;margin-bottom:6px;}
+.agent-desc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.agent-input{width:100%;background:var(--bg2);border:1px solid var(--border2);color:var(--text);padding:8px;font-size:11px;font-family:'Inter',sans-serif;margin-bottom:8px;resize:vertical;min-height:60px;outline:none;}
+.agent-input:focus{border-color:var(--blue);}
+.agent-output{background:var(--bg);border:1px solid var(--border);padding:10px;font-size:11px;color:#cbd5e1;line-height:1.7;min-height:60px;margin-top:8px;white-space:pre-wrap;display:none;}
+.agent-output.visible{display:block;}
+.loading-dots{color:var(--blue2);}
+
+/* CALENDAR */
+.cal-header{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px;}
+.cal-day-label{text-align:center;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);padding:6px 0;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+.cal-cell{background:var(--s1);border:1px solid var(--border);padding:8px;min-height:80px;cursor:pointer;transition:border-color 0.2s;}
+.cal-cell:hover{border-color:var(--blue2);}
+.cal-cell.empty{background:transparent;border-color:transparent;}
+.cal-date{font-size:11px;color:var(--muted);margin-bottom:4px;font-weight:600;}
+.cal-post{font-size:9px;padding:2px 5px;margin-bottom:2px;border-radius:1px;line-height:1.3;}
+.post-jeep{background:rgba(249,115,22,0.2);color:var(--jeep);border-left:2px solid var(--jeep);}
+.post-luxury{background:rgba(212,175,55,0.2);color:var(--luxury);border-left:2px solid var(--luxury);}
+.post-van{background:rgba(59,130,246,0.2);color:var(--van);border-left:2px solid var(--van);}
+.post-email{background:rgba(45,212,191,0.2);color:var(--teal);border-left:2px solid var(--teal);}
+.post-reels{background:rgba(232,23,93,0.2);color:var(--pink);border-left:2px solid var(--pink);}
+.cal-legend{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);}
+.legend-dot{width:10px;height:10px;border-radius:1px;}
+
+/* SECTION HEADERS */
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.section-hdr-num{width:26px;height:26px;background:var(--blue);color:#fff;font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;}
+.section-hdr-title{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text);}
+.section-hdr-line{flex:1;height:1px;background:var(--border);}
+
+/* NEWS BRIEF */
+.news-tracks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.news-track{background:var(--s1);border:1px solid var(--border);padding:16px;}
+.news-track-name{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;margin-bottom:10px;}
+.news-items{display:flex;flex-direction:column;gap:8px;}
+.news-item{padding:8px 10px;background:var(--bg2);border:1px solid var(--border);font-size:11px;color:#cbd5e1;line-height:1.5;cursor:pointer;}
+.news-item:hover{border-color:var(--blue2);}
+.news-item-source{font-size:9px;color:var(--muted);margin-bottom:2px;letter-spacing:1px;text-transform:uppercase;}
+.news-item-headline{font-weight:500;}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:20px;}
+.tab{padding:10px 18px;font-size:12px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all 0.2s;letter-spacing:0.5px;}
+.tab.active{color:var(--blue2);border-bottom-color:var(--blue);}
+.tab:hover{color:var(--text);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* CALLOUT */
+.callout{background:var(--s1);border-left:3px solid var(--teal);padding:14px 18px;font-size:12px;color:#cbd5e1;line-height:1.7;margin-bottom:20px;}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="brand">DEALER <span>HUB</span></div>
+      <div class="sub">Command Center · CCM × JAWSAI911</div>
+    </div>
+    <div class="sidebar-status">
+      <div class="status-dot"></div>
+      <div class="status-text">All Systems Live</div>
+    </div>
+    <div class="nav">
+      <div class="nav-section">Overview</div>
+      <div class="nav-item active" onclick="showPanel('dashboard')"><span class="icon">📊</span>Dashboard</div>
+      <div class="nav-section">Lead Management</div>
+      <div class="nav-item" onclick="showPanel('crm')"><span class="icon">🧠</span>CRM Pipeline<span class="nav-badge">8</span></div>
+      <div class="nav-item" onclick="showPanel('email')"><span class="icon">✉️</span>Email System</div>
+      <div class="nav-section">AI Agents</div>
+      <div class="nav-item" onclick="showPanel('agents')"><span class="icon">🤖</span>Agent Stack<span class="nav-badge">6</span></div>
+      <div class="nav-item" onclick="showPanel('news')"><span class="icon">📡</span>News Brief</div>
+      <div class="nav-section">Content</div>
+      <div class="nav-item" onclick="showPanel('calendar')"><span class="icon">📅</span>30-Day Calendar</div>
+      <div class="nav-item" onclick="showPanel('inventory')"><span class="icon">🚗</span>Inventory Posts</div>
+      <div class="nav-section">Strategy</div>
+      <div class="nav-item" onclick="showPanel('playbook')"><span class="icon">🎯</span>90-Day Playbook</div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title">Dealer <span>Command Hub</span></div>
+      <div class="topbar-right">
+        <div class="topbar-badge">🐾 JEEP · ⭐ LUXURY · 👨‍👩‍👧‍👦 FAMILY</div>
+        <div class="topbar-badge">Central NY · June 2026</div>
+      </div>
+    </div>
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="section-hdr"><div class="section-hdr-num">01</div><div class="section-hdr-title">Dashboard</div><div class="section-hdr-line"></div></div>
+        <div class="metric-row">
+          <div class="metric"><div class="metric-label">Active Leads</div><div class="metric-value">8</div><div class="metric-sub">Across 3 niches</div></div>
+          <div class="metric"><div class="metric-label">Pipeline Value</div><div class="metric-value">$112K</div><div class="metric-sub">Est. inventory value</div></div>
+          <div class="metric"><div class="metric-label">Appointments</div><div class="metric-value">3</div><div class="metric-sub">This week</div></div>
+          <div class="metric"><div class="metric-label">CPL Reduction</div><div class="metric-value">-47%</div><div class="metric-sub">vs. boosted posts</div></div>
+        </div>
+        <div class="callout">🦈 Welcome to your Dealer Command Hub. Everything your operation needs in one place — CRM, AI agents, content calendar, email system, and daily intelligence briefs. Built by CCM × JAWSAI911.</div>
+        <div class="section-hdr"><div class="section-hdr-num">02</div><div class="section-hdr-title">Quick Actions</div><div class="section-hdr-line"></div></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+          <div onclick="showPanel('crm')" style="background:var(--s1);border:1px solid var(--border);border-top:2px solid var(--blue);padding:16px;cursor:pointer;text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">🧠</div>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--text);">Open CRM</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">8 active leads</div>
+          </div>
+          <div onclick="showPanel('agents')" style="background:var(--s1);border:1px solid var(--border);border-top:2px solid var(--teal);padding:16px;cursor:pointer;text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">🤖</div>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--text);">AI Agents</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">6 agents live</div>
+          </div>
+          <div onclick="showPanel('calendar')" style="background:var(--s1);border:1px solid var(--border);border-top:2px solid var(--pink);padding:16px;cursor:pointer;text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">📅</div>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--text);">Calendar</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">30-day plan loaded</div>
+          </div>
+          <div onclick="showPanel('news')" style="background:var(--s1);border:1px solid var(--border);border-top:2px solid var(--amber);padding:16px;cursor:pointer;text-align:center;">
+            <div style="font-size:24px;margin-bottom:6px;">📡</div>
+            <div style="font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;color:var(--text);">News Brief</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:2px;">Today's intel ready</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRM -->
+      <div class="panel" id="panel-crm">
+        <div class="section-hdr"><div class="section-hdr-num">03</div><div class="section-hdr-title">CRM Pipeline</div><div class="section-hdr-line"></div></div>
+        <div class="add-lead-form">
+          <div class="form-title">+ Add New Lead</div>
+          <div class="form-row">
+            <div class="form-group"><div class="form-label">Name</div><input class="form-input" id="lead-name" placeholder="John Smith"></div>
+            <div class="form-group"><div class="form-label">Phone</div><input class="form-input" id="lead-phone" placeholder="(315) 555-0000"></div>
+            <div class="form-group"><div class="form-label">Email</div><input class="form-input" id="lead-email" placeholder="john@email.com"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><div class="form-label">Niche</div>
+              <select class="form-select" id="lead-niche">
+                <option value="jeep">🐾 Jeep</option>
+                <option value="luxury">⭐ Luxury</option>
+                <option value="van">👨‍👩‍👧‍👦 Family</option>
+              </select>
+            </div>
+            <div class="form-group"><div class="form-label">Vehicle Interest</div><input class="form-input" id="lead-vehicle" placeholder="2021 Jeep Wrangler"></div>
+            <div class="form-group"><div class="form-label">Source</div>
+              <select class="form-select" id="lead-source">
+                <option>FB Marketplace</option><option>Website</option><option>Referral</option><option>Instagram</option><option>Walk-in</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn" onclick="addLead()">Add Lead to Pipeline</button>
+        </div>
+        <div class="pipeline" id="pipeline-board">
+          <div class="pipeline-col">
+            <div class="pipeline-header"><div class="pipeline-col-name">NEW</div><div class="pipeline-count" id="count-new">3</div></div>
+            <div class="pipeline-body" id="col-new">
+              <div class="lead-card"><div class="lead-score">82</div><div class="lead-name">Mike Torres</div><div class="lead-meta">2022 Wrangler · FB Marketplace</div><span class="lead-niche niche-jeep">JEEP</span></div>
+              <div class="lead-card"><div class="lead-score">71</div><div class="lead-name">Sarah Kim</div><div class="lead-meta">E-Class · Website</div><span class="lead-niche niche-luxury">LUXURY</span></div>
+              <div class="lead-card"><div class="lead-score">65</div><div class="lead-name">Dave &amp; Lisa P.</div><div class="lead-meta">Sienna · Referral</div><span class="lead-niche niche-van">FAMILY</span></div>
+            </div>
+          </div>
+          <div class="pipeline-col">
+            <div class="pipeline-header"><div class="pipeline-col-name">CONTACTED</div><div class="pipeline-count" id="count-contacted">2</div></div>
+            <div class="pipeline-body" id="col-contacted">
+              <div class="lead-card"><div class="lead-score">88</div><div class="lead-name">Chris R.</div><div class="lead-meta">Gladiator · Instagram</div><span class="lead-niche niche-jeep">JEEP</span></div>
+              <div class="lead-card"><div class="lead-score">79</div><div class="lead-name">Amanda W.</div><div class="lead-meta">GLC · Website</div><span class="lead-niche niche-luxury">LUXURY</span></div>
+            </div>
+          </div>
+          <div class="pipeline-col">
+            <div class="pipeline-header"><div class="pipeline-col-name">APPOINTMENT</div><div class="pipeline-count" id="count-appt">2</div></div>
+            <div class="pipeline-body" id="col-appt">
+              <div class="lead-card"><div class="lead-score">94</div><div class="lead-name">Tom B.</div><div class="lead-meta">Cherokee · Walk-in</div><span class="lead-niche niche-jeep">JEEP</span></div>
+              <div class="lead-card"><div class="lead-score">91</div><div class="lead-name">Jennifer M.</div><div class="lead-meta">Odyssey · FB</div><span class="lead-niche niche-van">FAMILY</span></div>
+            </div>
+          </div>
+          <div class="pipeline-col">
+            <div class="pipeline-header"><div class="pipeline-col-name">CLOSED ✓</div><div class="pipeline-count" id="count-closed">1</div></div>
+            <div class="pipeline-body" id="col-closed">
+              <div class="lead-card"><div class="lead-score">100</div><div class="lead-name">Rob S.</div><div class="lead-meta">G-Wagon · Referral · $18,500</div><span class="lead-niche niche-luxury">LUXURY</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="panel" id="panel-email">
+        <div class="section-hdr"><div class="section-hdr-num">04</div><div class="section-hdr-title">Email System</div><div class="section-hdr-line"></div></div>
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this,'email-jeep')">🐾 Jeep Outreach</div>
+          <div class="tab" onclick="switchTab(this,'email-luxury')">⭐ Luxury Outreach</div>
+          <div class="tab" onclick="switchTab(this,'email-winback')">♻️ Win-Back</div>
+          <div class="tab" onclick="switchTab(this,'email-referral')">🤝 Referral Ask</div>
+        </div>
+        <div class="tab-panel active" id="tab-email-jeep">
+          <div class="form-group" style="margin-bottom:12px;"><div class="form-label">Recipient Name</div><input class="form-input" id="jeep-name" placeholder="Mike Torres" style="width:300px;"></div>
+          <button class="btn" onclick="generateEmail('jeep')">Generate Jeep Email ↗</button>
+          <div class="agent-output" id="out-jeep" style="margin-top:14px;max-height:300px;overflow-y:auto;"></div>
+        </div>
+        <div class="tab-panel" id="tab-email-luxury">
+          <div class="form-group" style="margin-bottom:12px;"><div class="form-label">Recipient Name</div><input class="form-input" id="luxury-name" placeholder="Sarah Kim" style="width:300px;"></div>
+          <button class="btn" onclick="generateEmail('luxury')">Generate Luxury Email ↗</button>
+          <div class="agent-output" id="out-luxury" style="margin-top:14px;max-height:300px;overflow-y:auto;"></div>
+        </div>
+        <div class="tab-panel" id="tab-email-winback">
+          <div class="form-group" style="margin-bottom:12px;"><div class="form-label">Past Client Name</div><input class="form-input" id="winback-name" placeholder="Tom Bradley" style="width:300px;"></div>
+          <button class="btn" onclick="generateEmail('winback')">Generate Win-Back Email ↗</button>
+          <div class="agent-output" id="out-winback" style="margin-top:14px;max-height:300px;overflow-y:auto;"></div>
+        </div>
+        <div class="tab-panel" id="tab-email-referral">
+          <div class="form-group" style="margin-bottom:12px;"><div class="form-label">Client Name</div><input class="form-input" id="referral-name" placeholder="Rob Simmons" style="width:300px;"></div>
+          <button class="btn" onclick="generateEmail('referral')">Generate Referral Email ↗</button>
+          <div class="agent-output" id="out-referral" style="margin-top:14px;max-height:300px;overflow-y:auto;"></div>
+        </div>
+      </div>
+
+      <!-- AGENTS -->
+      <div class="panel" id="panel-agents">
+        <div class="section-hdr"><div class="section-hdr-num">05</div><div class="section-hdr-title">AI Agent Stack</div><div class="section-hdr-line"></div></div>
+        <div class="callout">Six agents running 24/7. Paste your input, click generate, get a ready-to-use response in seconds. Powered by JAWSAI911.</div>
+        <div class="agent-grid">
+          <div class="agent-card">
+            <div class="live-badge">LIVE</div>
+            <div class="agent-icon">💬</div>
+            <div class="agent-name">Reply Agent</div>
+            <div class="agent-desc">Paste any comment or inquiry. Get an on-brand reply for any niche.</div>
+            <textarea class="agent-input" id="in-reply" placeholder="How much is the Wrangler? Is it 4x4?"></textarea>
+            <button class="btn btn-sm" onclick="runAgent('reply')">Generate Reply ↗</button>
+            <div class="agent-output" id="out-reply"></div>
+          </div>
+          <div class="agent-card">
+            <div class="live-badge">LIVE</div>
+            <div class="agent-icon">🎯</div>
+            <div class="agent-name">DM Closer</div>
+            <div class="agent-desc">High-intent lead details → 4-message appointment sequence.</div>
+            <textarea class="agent-input" id="in-closer" placeholder="Lead name, vehicle interest, what they said..."></textarea>
+            <button class="btn btn-sm" onclick="runAgent('closer')">Generate Sequence ↗</button>
+            <div class="agent-output" id="out-closer"></div>
+          </div>
+          <div class="agent-card">
+            <div class="live-badge">LIVE</div>
+            <div class="agent-icon">🚗</div>
+            <div class="agent-name">Inventory Agent</div>
+            <div class="agent-desc">Describe a new car arrival → get a full FB/IG post ready to publish.</div>
+            <textarea class="agent-input" id="in-inventory" placeholder="2021 Jeep Wrangler Sport, 42k miles, lifted, black, $18,500..."></textarea>
+            <button class="btn btn-sm" onclick="runAgent('inventory')">Generate Post ↗</button>
+            <div class="agent-output" id="out-inventory"></div>
+          </div>
+          <div class="agent-card">
+            <div class="live-badge">LIVE</div>
+            <div class="agent-icon">🎬</div>
+            <div class="agent-name">Video → 5 Formats</div>
+            <div class="agent-desc">Describe a video or walkthrough → TikTok, IG, FB, Shorts, X.</div>
+            <textarea class="agent-input" id="in-video" placeholder="Just filmed a lot walkthrough of the new Jeep arrivals..."></textarea>
+            <button class="btn btn-sm" onclick="runAgent('video')">Generate 5 Formats ↗</button>
+            <div class="agent-output" id="out-video"></div>
+          </div>
+          <div class="agent-card">
+            <div class="live-badge">LIVE</div>
+            <div class="agent-icon">#️⃣</div>
+            <div class="agent-name">Hashtag Agent</div>
+            <div class="agent-desc">Pick your post type → get a tuned hashtag stack for max reach.</div>
+            <select class="form-select" id="in-hashtag" style="margin-bottom:8px;">
+              <option>Jeep feature post</option>
+              <option>Luxury/MB spotlight</option>
+              <option>Family vehicle post</option>
+              <option>Lot walkthrough</option>
+              <option>Price drop announcement</option>
+              <option>Sold post</option>
+            </select>
+            <button class="btn btn-sm" onclick="runAgent('hashtag')">Generate Hashtags ↗</button>
+            <div class="agent-output" id="out-hashtag"></div>
+          </div>
+          <div class="agent-card">
+            <div class="live-badge">LIVE</div>
+            <div class="agent-icon">⭐</div>
+            <div class="agent-name">Review Agent</div>
+            <div class="agent-desc">Sold a car → generate a personalized review request message.</div>
+            <textarea class="agent-input" id="in-review" placeholder="Customer name, what they bought, anything personal you remember..."></textarea>
+            <button class="btn btn-sm" onclick="runAgent('review')">Generate Review Request ↗</button>
+            <div class="agent-output" id="out-review"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NEWS -->
+      <div class="panel" id="panel-news">
+        <div class="section-hdr"><div class="section-hdr-num">06</div><div class="section-hdr-title">Daily Intelligence Brief</div><div class="section-hdr-line"></div></div>
+        <div class="callout">Today's intel across all three niche tracks. AI-pulled, summarized, and ready to reference before posting or calling leads. Pushed to your email list automatically every morning.</div>
+        <div class="news-tracks">
+          <div class="news-track">
+            <div class="news-track-name" style="color:var(--jeep);">🐾 JEEP TRACK</div>
+            <div class="news-items">
+              <div class="news-item"><div class="news-item-source">Car & Driver</div><div class="news-item-headline">2025 Wrangler 4xe gets 25-mile EV range boost — CPO market impact expected</div></div>
+              <div class="news-item"><div class="news-item-source">JK Forum</div><div class="news-item-headline">Central NY trail season opens — Catskills routes now accessible</div></div>
+              <div class="news-item"><div class="news-item-source">Jeep Media</div><div class="news-item-headline">Gladiator Mojave gets limited summer run — allocation tight in Northeast</div></div>
+            </div>
+            <button class="btn btn-sm" style="margin-top:12px;width:100%;" onclick="generateNews('jeep')">Generate Today's Brief ↗</button>
+            <div class="agent-output" id="out-news-jeep" style="margin-top:8px;"></div>
+          </div>
+          <div class="news-track">
+            <div class="news-track-name" style="color:var(--luxury);">⭐ LUXURY TRACK</div>
+            <div class="news-items">
+              <div class="news-item"><div class="news-item-source">MB Press</div><div class="news-item-headline">EQS price drop signals inventory pressure — CPO opportunity window opening</div></div>
+              <div class="news-item"><div class="news-item-source">MotorTrend</div><div class="news-item-headline">Luxury CPO market up 12% Q2 — buyers shifting from new to certified</div></div>
+              <div class="news-item"><div class="news-item-source">MB Owners</div><div class="news-item-headline">Summer Drive Club events — Northeast chapter scheduling July meetups</div></div>
+            </div>
+            <button class="btn btn-sm" style="margin-top:12px;width:100%;" onclick="generateNews('luxury')">Generate Today's Brief ↗</button>
+            <div class="agent-output" id="out-news-luxury" style="margin-top:8px;"></div>
+          </div>
+          <div class="news-track">
+            <div class="news-track-name" style="color:var(--van);">👨‍👩‍👧‍👦 FAMILY TRACK</div>
+            <div class="news-items">
+              <div class="news-item"><div class="news-item-source">Consumer Reports</div><div class="news-item-headline">2022 Sienna rated #1 reliability in minivan segment — strong resale signal</div></div>
+              <div class="news-item"><div class="news-item-source">Car & Driver</div><div class="news-item-headline">Back-to-school buying surge begins — family vehicle demand up 18% July</div></div>
+              <div class="news-item"><div class="news-item-source">NHTSA</div><div class="news-item-headline">Chrysler Pacifica 2019-21 recall reminder — good content for trust-building</div></div>
+            </div>
+            <button class="btn btn-sm" style="margin-top:12px;width:100%;" onclick="generateNews('family')">Generate Today's Brief ↗</button>
+            <div class="agent-output" id="out-news-family" style="margin-top:8px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDAR -->
+      <div class="panel" id="panel-calendar">
+        <div class="section-hdr"><div class="section-hdr-num">07</div><div class="section-hdr-title">30-Day Content Calendar</div><div class="section-hdr-line"></div></div>
+        <div class="cal-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:var(--jeep);"></div>Jeep Post</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--luxury);"></div>Luxury Post</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--van);"></div>Family Post</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--teal);"></div>Email Blast</div>
+          <div class="legend-item"><div class="legend-dot" style="background:var(--pink);"></div>Reels/Video</div>
+        </div>
+        <div class="cal-header">
+          <div class="cal-day-label">MON</div><div class="cal-day-label">TUE</div><div class="cal-day-label">WED</div>
+          <div class="cal-day-label">THU</div><div class="cal-day-label">FRI</div><div class="cal-day-label">SAT</div><div class="cal-day-label">SUN</div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+
+      <!-- INVENTORY -->
+      <div class="panel" id="panel-inventory">
+        <div class="section-hdr"><div class="section-hdr-num">08</div><div class="section-hdr-title">Inventory Post Generator</div><div class="section-hdr-line"></div></div>
+        <div class="callout">New car on the lot → full social post in 60 seconds. Fill in the details below and the Inventory Agent writes the full post, caption, and hashtags.</div>
+        <div class="add-lead-form">
+          <div class="form-title">New Arrival Details</div>
+          <div class="form-row">
+            <div class="form-group"><div class="form-label">Year</div><input class="form-input" id="inv-year" placeholder="2022"></div>
+            <div class="form-group"><div class="form-label">Make</div><input class="form-input" id="inv-make" placeholder="Jeep"></div>
+            <div class="form-group"><div class="form-label">Model</div><input class="form-input" id="inv-model" placeholder="Wrangler Unlimited"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><div class="form-label">Mileage</div><input class="form-input" id="inv-miles" placeholder="38,000"></div>
+            <div class="form-group"><div class="form-label">Price</div><input class="form-input" id="inv-price" placeholder="$19,900"></div>
+            <div class="form-group"><div class="form-label">Color / Key Features</div><input class="form-input" id="inv-features" placeholder="Black, lifted, steel bumpers"></div>
+          </div>
+          <button class="btn" onclick="generateInventoryPost()">Generate Full Post Package ↗</button>
+          <div class="agent-output" id="out-inv" style="margin-top:14px;max-height:400px;overflow-y:auto;"></div>
+        </div>
+      </div>
+
+      <!-- PLAYBOOK -->
+      <div class="panel" id="panel-playbook">
+        <div class="section-hdr"><div class="section-hdr-num">09</div><div class="section-hdr-title">90-Day Playbook</div><div class="section-hdr-line"></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;">
+          <div style="background:var(--s1);border:1px solid var(--border);overflow:hidden;">
+            <div style="padding:14px 16px;background:var(--s2);border-bottom:1px solid var(--border2);">
+              <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Phase 1</div>
+              <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--blue2);">BUILD THE FOUNDATION</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Days 1–30</div>
+            </div>
+            <div style="padding:16px;">
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;position:relative;">→ Register domain + launch site<br><span style="font-size:10px;color:var(--muted);">3 themed landing pages</span></li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;position:relative;">→ Launch 3 niche FB ad sets</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;position:relative;">→ Deploy CRM + AI chat</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;position:relative;">→ All 6 agents configured</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;position:relative;">→ Join Jeep groups + MB clubs</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;position:relative;">→ Daily news brief live</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;position:relative;">→ Past-client win-back sequence</li>
+              </ul>
+              <div style="margin-top:12px;padding:8px 12px;background:rgba(232,23,93,0.08);border:1px solid rgba(232,23,93,0.2);font-size:11px;color:var(--pink);font-weight:600;">KPI: CPL baseline · all systems live</div>
+            </div>
+          </div>
+          <div style="background:var(--s1);border:1px solid var(--border);overflow:hidden;">
+            <div style="padding:14px 16px;background:var(--s2);border-bottom:1px solid var(--border2);">
+              <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Phase 2</div>
+              <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--blue2);">GENERATE MOMENTUM</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Days 31–60</div>
+            </div>
+            <div style="padding:16px;">
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Optimize all 3 ad sets</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Niche community content live</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Instagram MB heritage series</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Bi-weekly email blasts</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Inventory Agent in rotation</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Review Agent collecting reviews</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ DM Closer closing appointments</li>
+              </ul>
+              <div style="margin-top:12px;padding:8px 12px;background:rgba(232,23,93,0.08);border:1px solid rgba(232,23,93,0.2);font-size:11px;color:var(--pink);font-weight:600;">KPI: 20%+ CPL drop · 3× leads</div>
+            </div>
+          </div>
+          <div style="background:var(--s1);border:1px solid var(--border);overflow:hidden;">
+            <div style="padding:14px 16px;background:var(--s2);border-bottom:1px solid var(--border2);">
+              <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Phase 3</div>
+              <div style="font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--blue2);">SCALE &amp; DOMINATE</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px;">Days 61–90</div>
+            </div>
+            <div style="padding:16px;">
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Scale winning ad sets</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Friday Reels cadence live</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Video → 5 Formats weekly</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Referral program launched</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Buyer's guide lead magnets</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Quarterly data review + renewal</li>
+                <li style="font-size:12px;color:#cbd5e1;padding-left:14px;">→ Case study built for referrals</li>
+              </ul>
+              <div style="margin-top:12px;padding:8px 12px;background:rgba(232,23,93,0.08);border:1px solid rgba(232,23,93,0.2);font-size:11px;color:var(--pink);font-weight:600;">KPI: 3× monthly units vs baseline</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// NAV
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// TABS
+function switchTab(el, id) {
+  el.parentElement.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  const panel = el.closest('.panel');
+  panel.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  panel.querySelector('#tab-' + id).classList.add('active');
+}
+
+// ADD LEAD
+function addLead() {
+  const name = document.getElementById('lead-name').value || 'New Lead';
+  const niche = document.getElementById('lead-niche').value;
+  const vehicle = document.getElementById('lead-vehicle').value || 'Vehicle TBD';
+  const source = document.getElementById('lead-source').value;
+  const score = Math.floor(Math.random() * 30) + 60;
+  const nicheLabel = {jeep:'🐾 JEEP', luxury:'⭐ LUXURY', van:'👨‍👩‍👧‍👦 FAMILY'}[niche];
+  const nicheClass = {jeep:'niche-jeep', luxury:'niche-luxury', van:'niche-van'}[niche];
+  const card = document.createElement('div');
+  card.className = 'lead-card';
+  card.innerHTML = \`<div class="lead-score">\${score}</div><div class="lead-name">\${name}</div><div class="lead-meta">\${vehicle} · \${source}</div><span class="lead-niche \${nicheClass}">\${nicheLabel}</span>\`;
+  document.getElementById('col-new').appendChild(card);
+  const cnt = document.getElementById('count-new');
+  cnt.textContent = parseInt(cnt.textContent) + 1;
+  document.getElementById('lead-name').value = '';
+  document.getElementById('lead-vehicle').value = '';
+  document.getElementById('lead-phone').value = '';
+  document.getElementById('lead-email').value = '';
+}
+
+// CALENDAR BUILD
+const calData = [
+  {},{jeep:'Jeep Arrival Post'},{},{luxury:'MB Spotlight'},{reels:'Friday Reels'},{},{}  ,
+  {email:'Email Blast'},{jeep:'Trail Tip'},{},{luxury:'Heritage Post'},{reels:'Lot Walkthrough'},{},{}  ,
+  {},{jeep:'Jeep of Week'},{},{van:'Family Feature'},{reels:'Friday Reels'},{},{},
+  {email:'Email Blast'},{jeep:'Community Post'},{},{luxury:'CPO Education'},{reels:'Price Drop Reel'},{},{}
+];
+const cal = document.getElementById('cal-grid');
+calData.forEach((day, i) => {
+  const cell = document.createElement('div');
+  cell.className = 'cal-cell';
+  const d = i + 1;
+  cell.innerHTML = \`<div class="cal-date">\${d}</div>\`;
+  if (day.jeep) cell.innerHTML += \`<div class="cal-post post-jeep">\${day.jeep}</div>\`;
+  if (day.luxury) cell.innerHTML += \`<div class="cal-post post-luxury">\${day.luxury}</div>\`;
+  if (day.van) cell.innerHTML += \`<div class="cal-post post-van">\${day.van}</div>\`;
+  if (day.email) cell.innerHTML += \`<div class="cal-post post-email">\${day.email}</div>\`;
+  if (day.reels) cell.innerHTML += \`<div class="cal-post post-reels">\${day.reels}</div>\`;
+  cal.appendChild(cell);
+});
+
+// AI AGENTS
+async function callClaude(prompt, outputId) {
+  const out = document.getElementById(outputId);
+  out.style.display = 'block';
+  out.textContent = 'Generating...';
+  out.classList.add('visible');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.map(c => c.text || '').join('') || 'Error generating response.';
+    out.textContent = text;
+  } catch(e) {
+    out.textContent = 'Error: ' + e.message;
+  }
+}
+
+function runAgent(type) {
+  const prompts = {
+    reply: () => \`You are a friendly used car dealer in Central NY. A potential customer sent this message: "\${document.getElementById('in-reply').value}". Write a short, warm, on-brand reply that builds trust and moves them toward a test drive. Keep it conversational, under 80 words.\`,
+    closer: () => \`You are a car sales expert. Create a 4-message DM sequence to close an appointment for this lead: "\${document.getElementById('in-closer').value}". Messages should be spaced over 3 days. Each message should be under 50 words, warm, not pushy. Format as Message 1 (Day 1):, Message 2 (Day 2):, etc.\`,
+    inventory: () => \`Write a Facebook/Instagram post for this used car: "\${document.getElementById('in-inventory').value}". Include: attention-grabbing hook, key specs, price, CTA to DM or call. Add 10 relevant hashtags. Keep it under 150 words total.\`,
+    video: () => \`Turn this video idea into 5 social media formats: "\${document.getElementById('in-video').value}". Format as: TIKTOK SCRIPT:, INSTAGRAM CAPTION:, FACEBOOK POST:, YOUTUBE SHORTS HOOK:, X/TWITTER:. Each under 80 words.\`,
+    hashtag: () => \`Generate the optimal hashtag stack for a used car dealer post type: "\${document.getElementById('in-hashtag').value}". Give 20 hashtags — mix of high volume, mid volume, and niche. Group them in one line ready to copy.\`,
+    review: () => \`Write a personalized post-sale review request text message for this customer: "\${document.getElementById('in-review').value}". It should feel warm and personal, not automated. Ask for a Google review. Under 60 words. Include a placeholder [GOOGLE LINK].\`
+  };
+  callClaude(prompts[type](), 'out-' + type);
+}
+
+function generateEmail(type) {
+  const names = {jeep: document.getElementById('jeep-name').value || 'there', luxury: document.getElementById('luxury-name').value || 'there', winback: document.getElementById('winback-name').value || 'there', referral: document.getElementById('referral-name').value || 'there'};
+  const name = names[type];
+  const prompts = {
+    jeep: \`Write a cold outreach email to \${name} who may be interested in a used Jeep. Subject line + body. Jeep buyer: adventure-focused, community-oriented. Mention we have Wranglers, Cherokees, Gladiators. CTA to reply or visit. Under 120 words. Warm, not salesy.\`,
+    luxury: \`Write a cold outreach email to \${name} who may be interested in a pre-owned luxury vehicle, specifically Mercedes. Subject line + body. Luxury buyer: status-conscious, research-driven. Mention CPO quality, value vs new. CTA to schedule a private showing. Under 120 words. Sophisticated tone.\`,
+    winback: \`Write a win-back email to \${name}, a past customer who bought a car from us. We want to check in, see if they need anything, and plant the seed for their next purchase or a referral. Subject line + body. Warm, personal, no pressure. Under 100 words.\`,
+    referral: \`Write a referral ask email to \${name}, a happy past customer. Ask if they know anyone looking for a used car — Jeep, luxury, or family vehicle. Offer a referral incentive (dealer's choice on amount — leave as [INCENTIVE]). Subject line + body. Friendly, brief. Under 90 words.\`
+  };
+  callClaude(prompts[type], 'out-' + type);
+}
+
+function generateNews(track) {
+  const prompts = {
+    jeep: \`Write a short daily intelligence brief for a used Jeep dealer. Cover: 1 market trend, 1 community insight, 1 actionable tip for today's social post. Format as a crisp 3-bullet brief. Under 100 words total. Professional but conversational.\`,
+    luxury: \`Write a short daily intelligence brief for a used Mercedes/luxury car dealer. Cover: 1 CPO market trend, 1 buyer behavior insight, 1 actionable tip for today's content. Format as 3 bullets. Under 100 words. Sophisticated tone.\`,
+    family: \`Write a short daily intelligence brief for a used minivan/family vehicle dealer. Cover: 1 demand trend, 1 buyer concern to address, 1 content idea for today. Format as 3 bullets. Under 100 words. Friendly, practical tone.\`
+  };
+  callClaude(prompts[track], 'out-news-' + track);
+}
+
+function generateInventoryPost() {
+  const year = document.getElementById('inv-year').value;
+  const make = document.getElementById('inv-make').value;
+  const model = document.getElementById('inv-model').value;
+  const miles = document.getElementById('inv-miles').value;
+  const price = document.getElementById('inv-price').value;
+  const features = document.getElementById('inv-features').value;
+  const prompt = \`Write a complete social media post package for this used car just added to a dealer's lot:
+\${year} \${make} \${model} | \${miles} miles | \${price} | \${features}
+
+Include:
+FACEBOOK POST: (under 100 words, hook + details + CTA)
+INSTAGRAM CAPTION: (under 80 words + emoji)
+HASHTAGS: (15 relevant tags)
+FB MARKETPLACE DESCRIPTION: (detailed, trust-building, under 150 words)\`;
+  callClaude(prompt, 'out-inv');
+}
+</script>
+</body>
+</html>`;
+
+// HUB TOGGLE
+let hubLoaded = false;
+function toggleHub() {
+  const overlay = document.getElementById('hub-overlay');
+  overlay.classList.toggle('open');
+  if (overlay.classList.contains('open') && !hubLoaded) {
+    // Load hub content inline
+    const frame = document.getElementById('hub-frame');
+    frame.srcdoc = HUB_CONTENT;
+    hubLoaded = true;
+  }
+}
+
+
+</script>
+
+<!-- HIDDEN CAR ICON -->
+<div class="secret-car" onclick="toggleHub()" title="">🚗</div>
+
+<!-- HUB OVERLAY -->
+<div class="hub-overlay" id="hub-overlay">
+  <div class="hub-container">
+    <div class="hub-topbar">
+      <div class="hub-topbar-title">DEALER <span>COMMAND HUB</span> — Edward Pontello</div>
+      <button class="hub-close" onclick="toggleHub()">✕ Close</button>
+    </div>
+    <div class="hub-iframe-container">
+      <iframe id="hub-frame" src="about:blank"></iframe>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
