@@ -1533,6 +1533,10 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-
 <script>
 // NAV
 function showPanel(el, id) {
+  if (typeof el === 'string' && typeof id === 'undefined') {
+    id = el;
+    el = null;
+  }
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
