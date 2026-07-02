@@ -67,6 +67,18 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
   max-width:1200px; margin:0 auto; padding:0 48px;
   width:100%;
 }
+.home-brand {
+  display:inline-block;
+  font-family:'Rajdhani',sans-serif;
+  font-size:68px;
+  font-weight:700;
+  line-height:0.92;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#ff6b6b;
+  margin-bottom:18px;
+  text-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
 .home-hero-eyebrow {
   font-size:11px; letter-spacing:4px; text-transform:uppercase;
   color:#ff8a80; margin-bottom:16px; font-weight:600;
@@ -242,6 +254,52 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 .video-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#ff8a80; margin-bottom:6px; }
 .video-title { font-family:'Rajdhani',sans-serif; font-size:24px; font-weight:700; color:#fff; margin-bottom:8px; }
 .video-desc { font-size:12px; color:rgba(255,255,255,0.66); line-height:1.6; }
+
+.review-strip {
+  background:#fff;
+  padding:56px 48px 32px;
+}
+.review-strip-inner {
+  max-width:1200px;
+  margin:0 auto;
+}
+.review-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:28px;
+}
+.review-card {
+  background:#fff;
+  border:1px solid #e4eaf2;
+  box-shadow:0 2px 12px rgba(10,22,40,0.06);
+  padding:20px 22px;
+}
+.review-stars {
+  color:#c62828;
+  font-size:14px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+.review-text {
+  font-size:13px;
+  color:#4a5a72;
+  line-height:1.7;
+  margin-bottom:14px;
+}
+.review-author {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#0a1628;
+}
+.review-note {
+  margin-top:16px;
+  font-size:11px;
+  color:#7a879d;
+  letter-spacing:0.6px;
+}
 
 /* LEAD FORM SECTION */
 .lead-section { background:#f0f4f8; padding:80px 48px; }
@@ -587,11 +645,13 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
     </div>
     <div class="home-hero-bg"></div>
     <div class="home-hero-content">
+      <div class="home-brand">Giant Auto Sales</div>
       <div class="home-hero-eyebrow">Serving East Syracuse Since 2007</div>
       <div class="home-hero-title">Buy with confidence.<br><span>Shop without pressure.</span></div>
       <div class="home-hero-sub">A better used-car buying experience for every driver, with fair prices, clear answers, and the kind of real service that keeps Central New York buyers coming back.</div>
       <div class="home-hero-btns">
         <button class="btn-primary" onclick="document.querySelector('.home-niches').scrollIntoView({behavior:'smooth'})">Browse Inventory</button>
+        <button class="btn-primary" onclick="window.open('https://thegiantonline.com/financing','_blank')">Credit Application</button>
         <button class="btn-outline" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Contact Us</button>
       </div>
     </div>
@@ -733,6 +793,36 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="review-strip">
+    <div class="review-strip-inner">
+      <div class="section-eyebrow">Reviews & Reputation</div>
+      <div class="section-heading">See Why Buyers Trust Giant Auto Sales</div>
+      <div class="section-sub">Public review access is available through Giant Auto Sales' live review pages. This section is here so the homepage clearly sells trust before the buyer ever reaches the contact form.</div>
+      <div class="review-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Serving East Syracuse since 2007 with a public reviews page, visible inventory, and a straightforward used-car focus built around real local demand.</div>
+          <div class="review-author">Established Local Dealer</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Mark Carter brings over 35 years of automotive sales and finance experience, which gives the store a stronger credibility story than a generic dealer template can communicate.</div>
+          <div class="review-author">35+ Years Experience</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <div class="review-text">Want the full public review history? Use the button below to open Giant Auto Sales' live reviews page and show the client the trust layer that will be surfaced more strongly in the final build.</div>
+          <div class="review-author">Live Public Reviews</div>
+        </div>
+      </div>
+      <div style="margin-top:18px;display:flex;gap:14px;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="window.open('https://thegiantonline.com/reviews','_blank')">Read Public Reviews</button>
+        <button class="btn-outline" style="color:#0a1628;border-color:#c62828;" onclick="window.open('https://thegiantonline.com/meetourstaff','_blank')">Meet The Team</button>
+      </div>
+      <div class="review-note">Review source pages: Giant Auto Sales public reviews and staff pages.</div>
     </div>
   </div>
 
@@ -1044,11 +1134,11 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 <div class="chat-bubble" onclick="toggleChat()" id="chat-btn">💬</div>
 <div class="chat-window" id="chat-window">
   <div class="chat-header">
-    <div><div class="chat-header-title">Giant Auto Sales</div><div class="chat-header-sub">Typically replies within the hour</div></div>
+    <div><div class="chat-header-title">Giant Auto Sales AI Assistant</div><div class="chat-header-sub">24/7 automated help and lead capture</div></div>
     <div class="chat-close" onclick="toggleChat()">×</div>
   </div>
   <div class="chat-messages" id="chat-messages">
-    <div class="chat-msg bot"><div class="chat-msg-bubble">Hey! 👋 Welcome to Giant Auto Sales. Are you looking for a 4x4, a luxury vehicle, or a family vehicle today?</div></div>
+    <div class="chat-msg bot"><div class="chat-msg-bubble">Hey! 👋 I'm the Giant Auto Sales AI assistant. I'm here 24/7 to help with inventory questions, financing interest, and getting you connected with the store. Are you looking for a 4x4, a luxury vehicle, or a family vehicle today?</div></div>
   </div>
   <div class="chat-input-row">
     <input class="chat-input" id="chat-input" placeholder="Type a message..." onkeypress="if(event.key==='Enter')sendChat()">
