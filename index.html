@@ -621,6 +621,272 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
   border: none;
 }
 
+@media (max-width: 1100px) {
+  .inventory-grid,
+  .video-grid,
+  .review-grid,
+  .jeep-grid,
+  .jeep-inv-grid,
+  .luxury-grid,
+  .luxury-inv-grid,
+  .family-trust-inner,
+  .family-inv-grid,
+  .site-footer-inner,
+  .pipeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .nav {
+    height: auto;
+    min-height: 64px;
+    padding: 10px 18px;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-size: 23px;
+    letter-spacing: 1px;
+  }
+  .nav-links {
+    width: 100%;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link,
+  .nav-cta {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .home-hero,
+  .jeep-hero,
+  .luxury-hero,
+  .family-hero {
+    height: auto;
+    min-height: 100svh;
+    padding: 120px 0 48px;
+    align-items: flex-end;
+  }
+  .home-hero-content,
+  .jeep-hero-content,
+  .luxury-hero-content,
+  .family-hero-content,
+  .home-niches-head,
+  .inventory-section,
+  .video-section,
+  .review-strip,
+  .lead-section,
+  .jeep-features,
+  .jeep-inventory,
+  .jeep-form-section,
+  .luxury-features,
+  .luxury-inventory,
+  .luxury-form-section,
+  .family-trust,
+  .family-inventory,
+  .family-form-section,
+  .site-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .home-brand {
+    font-size: 46px;
+    line-height: 0.95;
+    letter-spacing: 2px;
+    padding: 10px 14px;
+  }
+  .home-hero-title,
+  .jeep-title,
+  .luxury-title,
+  .family-title {
+    font-size: 52px;
+    line-height: 0.95;
+  }
+  .home-hero-sub,
+  .jeep-sub,
+  .luxury-sub,
+  .family-sub {
+    font-size: 16px;
+    max-width: 100%;
+  }
+  .home-hero-btns,
+  .footer-bottom,
+  .stats-bar-inner {
+    gap: 12px;
+  }
+  .btn-primary,
+  .btn-outline,
+  .btn-jeep,
+  .btn-jeep-outline,
+  .btn-luxury,
+  .btn-luxury-outline,
+  .btn-family,
+  .btn-family-outline {
+    width: 100%;
+    justify-content: center;
+  }
+  .niche-cards,
+  .inventory-grid,
+  .video-grid,
+  .review-grid,
+  .jeep-grid,
+  .jeep-inv-grid,
+  .luxury-grid,
+  .luxury-inv-grid,
+  .family-trust-inner,
+  .family-inv-grid,
+  .site-footer-inner,
+  .pipeline {
+    grid-template-columns: 1fr;
+  }
+  .stats-bar {
+    padding: 24px 20px;
+  }
+  .stats-bar-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stat-item {
+    padding: 16px 10px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .section-heading,
+  .video-heading,
+  .jeep-section-heading,
+  .luxury-heading {
+    font-size: 34px;
+  }
+  .niche-card-home,
+  .niche-cards {
+    min-height: unset;
+  }
+  .niche-card-home {
+    min-height: 360px;
+  }
+  .lead-form,
+  .jeep-form,
+  .luxury-form,
+  .family-form {
+    padding: 24px 18px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .chat-window {
+    right: 12px;
+    left: 12px;
+    bottom: 82px;
+    width: auto;
+    max-width: none;
+  }
+  .chat-bubble {
+    right: 16px;
+    bottom: 20px;
+  }
+  .secret-car {
+    left: 16px;
+    bottom: 20px;
+  }
+  .hub-container {
+    width: 100vw;
+    height: 100svh;
+    border: none;
+  }
+  .hub-topbar {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  .hub-topbar-title {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  .hub-close {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .home-hero-video {
+    object-position: 76% center;
+  }
+  .home-brand {
+    font-size: 34px;
+    letter-spacing: 1px;
+    width: 100%;
+  }
+  .home-hero-eyebrow,
+  .jeep-eyebrow,
+  .luxury-eyebrow,
+  .family-eyebrow,
+  .section-eyebrow,
+  .jeep-section-eyebrow,
+  .luxury-eyebrow2 {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+  }
+  .home-hero-title,
+  .jeep-title,
+  .luxury-title,
+  .family-title {
+    font-size: 42px;
+  }
+  .home-hero-sub,
+  .jeep-sub,
+  .luxury-sub,
+  .family-sub,
+  .section-sub,
+  .video-sub,
+  .jeep-section-sub,
+  .luxury-sub2 {
+    font-size: 14px;
+  }
+  .stats-bar-inner {
+    grid-template-columns: 1fr;
+  }
+  .stat-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-item:last-child {
+    border-bottom: none;
+  }
+  .inv-img,
+  .jeep-inv-img,
+  .luxury-inv-img,
+  .family-inv-img {
+    height: 220px;
+  }
+  .section-heading,
+  .video-heading,
+  .jeep-section-heading,
+  .luxury-heading {
+    font-size: 30px;
+    line-height: 1;
+  }
+  .review-card,
+  .luxury-feat,
+  .jeep-feat-card,
+  .trust-item {
+    padding: 18px;
+  }
+  .chat-messages {
+    max-height: 220px;
+  }
+}
+
 </style>
 </head>
 <body>
