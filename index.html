@@ -20,7 +20,7 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 }
 .nav.scrolled { background:rgba(10,22,40,0.97); box-shadow:0 2px 20px rgba(0,0,0,0.3); }
 .nav-logo { display:flex; align-items:center; cursor:pointer; }
-.nav-logo svg { display:block; width:auto; height:42px; filter:drop-shadow(0 10px 18px rgba(0,0,0,0.22)); }
+.nav-logo img { display:block; width:auto; height:42px; filter:drop-shadow(0 10px 18px rgba(0,0,0,0.22)); }
 .nav-links { display:flex; gap:32px; align-items:center; }
 .nav-link { color:rgba(255,255,255,0.7); font-size:13px; font-weight:500; cursor:pointer; letter-spacing:0.5px; transition:color 0.2s; text-decoration:none; }
 .nav-link:hover { color:#fff; }
@@ -78,7 +78,7 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
   border-radius:6px;
   box-shadow:0 18px 40px rgba(0,0,0,0.22);
 }
-.home-brand svg {
+.home-brand img {
   display:block;
   width:min(740px, 76vw);
   height:auto;
@@ -321,7 +321,7 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 /* FOOTER */
 .site-footer { background:#0a1628; padding:48px; }
 .site-footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; }
-.footer-brand svg { display:block; width:auto; height:56px; margin-bottom:10px; }
+.footer-brand img { display:block; width:auto; height:56px; margin-bottom:10px; }
 .footer-brand p { font-size:12px; color:rgba(255,255,255,0.4); line-height:1.7; margin-bottom:16px; }
 .footer-col-title { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:14px; }
 .footer-col-link { display:block; font-size:12px; color:rgba(255,255,255,0.6); margin-bottom:8px; cursor:pointer; transition:color 0.2s; text-decoration:none; }
@@ -624,18 +624,7 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
 
 <!-- NAV -->
 <nav class="nav" id="main-nav">
-  <div class="nav-logo" onclick="showPage('home')">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" role="img" aria-label="Giant Auto Sales">
-      <path d="M1010 340 C1000 255 930 190 820 190 H630 C510 190 430 280 430 390 V625 C430 735 510 825 630 825 H825 C950 825 1035 740 1035 625 V540 H820 V625 H630 V390 H1010 V340 Z" fill="#ed1c24"/>
-      <path d="M335 520 C390 520 420 510 455 490 L560 435 C620 405 680 390 750 390 H805 C900 390 980 420 1045 475 L1130 545 C1148 560 1155 578 1155 595 C1155 605 1147 612 1138 612 H1070 C1040 612 1015 604 995 590 L920 540 C875 510 820 493 764 493 H632 C565 493 500 510 438 544 L380 575 C354 589 333 589 316 582 C299 575 298 531 335 520 Z" fill="#ffffff"/>
-      <path d="M455 544 C520 509 575 493 632 493 H764 C820 493 875 510 920 540 L995 590 H1145" fill="none" stroke="#ed1c24" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M700 430 C720 420 740 420 760 430 L835 478 H620 Z" fill="#ffffff"/>
-      <path d="M854 502 L892 502" fill="none" stroke="#ed1c24" stroke-width="18" stroke-linecap="round"/>
-      <path d="M1072 574 C1098 555 1114 548 1130 548 C1145 548 1152 558 1150 579 L1147 616 H1112 Z" fill="#ed1c24"/>
-      <text x="700" y="1070" text-anchor="middle" fill="#ed1c24" style="font-family:Arial Black, Arial, Helvetica, sans-serif;font-size:220px;font-weight:900;letter-spacing:4px;">GIANT</text>
-      <text x="700" y="1210" text-anchor="middle" fill="#ed1c24" style="font-family:Arial Black, Arial, Helvetica, sans-serif;font-size:110px;font-weight:900;letter-spacing:16px;">AUTO SALES</text>
-    </svg>
-  </div>
+  <div class="nav-logo" onclick="showPage('home')"><img src="giant_auto_sales_logo_1.svg" alt="Giant Auto Sales"></div>
   <div class="nav-links">
     <a class="nav-link" onclick="showPage('jeep')">🐾 4x4s</a>
     <a class="nav-link" onclick="showPage('luxury')">⭐ Luxury</a>
@@ -659,13 +648,7 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
     </div>
     <div class="home-hero-bg"></div>
     <div class="home-hero-content">
-      <div class="home-brand">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Giant Auto Sales">
-          <path d="M40 335 C130 260 230 230 390 230 H500 C610 230 690 205 785 158 C885 109 990 90 1105 90 C1208 90 1295 112 1378 154 C1454 193 1519 221 1560 228 C1578 231 1586 238 1587 248 C1588 260 1578 268 1560 268 H1428 C1416 268 1406 267 1394 265 L1298 252 C1209 240 1116 235 1019 235 H586 C457 235 329 248 205 275 L97 299 C74 304 56 310 42 324 C35 331 29 339 25 346 C18 358 9 360 2 354 C-4 349 2 340 40 335 Z" fill="#ed1c24"/>
-          <text x="800" y="585" text-anchor="middle" fill="#ed1c24" style="font-family:Arial Black, Arial, Helvetica, sans-serif;font-size:270px;font-weight:900;letter-spacing:4px;">GIANT</text>
-          <text x="800" y="790" text-anchor="middle" fill="#ed1c24" style="font-family:Arial Black, Arial, Helvetica, sans-serif;font-size:120px;font-weight:900;letter-spacing:12px;">AUTO SALES</text>
-        </svg>
-      </div>
+      <div class="home-brand"><img src="giant_auto_sales_logo_4.svg" alt="Giant Auto Sales"></div>
       <div class="home-hero-eyebrow">Serving East Syracuse Since 2007</div>
       <div class="home-hero-title">Buy with confidence.<br><span>Shop without pressure.</span></div>
       <div class="home-hero-sub">A better used-car buying experience for every driver, with fair prices, clear answers, and the kind of real service that keeps Central New York buyers coming back.</div>
@@ -889,16 +872,7 @@ body { font-family:'Inter',sans-serif; background:#fff; color:#0a1628; }
   <footer class="site-footer">
     <div class="site-footer-inner">
       <div class="footer-brand">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1400" role="img" aria-label="Giant Auto Sales">
-          <path d="M1010 340 C1000 255 930 190 820 190 H630 C510 190 430 280 430 390 V625 C430 735 510 825 630 825 H825 C950 825 1035 740 1035 625 V540 H820 V625 H630 V390 H1010 V340 Z" fill="#ed1c24"/>
-          <path d="M335 520 C390 520 420 510 455 490 L560 435 C620 405 680 390 750 390 H805 C900 390 980 420 1045 475 L1130 545 C1148 560 1155 578 1155 595 C1155 605 1147 612 1138 612 H1070 C1040 612 1015 604 995 590 L920 540 C875 510 820 493 764 493 H632 C565 493 500 510 438 544 L380 575 C354 589 333 589 316 582 C299 575 298 531 335 520 Z" fill="#ffffff"/>
-          <path d="M455 544 C520 509 575 493 632 493 H764 C820 493 875 510 920 540 L995 590 H1145" fill="none" stroke="#ed1c24" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M700 430 C720 420 740 420 760 430 L835 478 H620 Z" fill="#ffffff"/>
-          <path d="M854 502 L892 502" fill="none" stroke="#ed1c24" stroke-width="18" stroke-linecap="round"/>
-          <path d="M1072 574 C1098 555 1114 548 1130 548 C1145 548 1152 558 1150 579 L1147 616 H1112 Z" fill="#ed1c24"/>
-          <text x="700" y="1070" text-anchor="middle" fill="#ed1c24" style="font-family:Arial Black, Arial, Helvetica, sans-serif;font-size:220px;font-weight:900;letter-spacing:4px;">GIANT</text>
-          <text x="700" y="1210" text-anchor="middle" fill="#ed1c24" style="font-family:Arial Black, Arial, Helvetica, sans-serif;font-size:110px;font-weight:900;letter-spacing:16px;">AUTO SALES</text>
-        </svg>
+        <img src="giant_auto_sales_logo_1.svg" alt="Giant Auto Sales">
         <p>Central New York's trusted source for quality used vehicles. 4x4, luxury, and family vehicles — inspected, priced right, and backed by real service.</p>
       </div>
       <div>
